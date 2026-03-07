@@ -11,6 +11,8 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   overflow: hidden;
   user-select: none;
+  /* Prevent swipe-back gesture on mobile browsers triggering page navigation */
+  overscroll-behavior: none;
 }
 
 /* ── App shell ── */
@@ -118,7 +120,9 @@ body {
   justify-content: center;
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
   animation: float 3.2s ease-in-out infinite;
-  touch-action: none;
+  /* touch-action: pan-y allows the panel to still scroll vertically on touch,
+     while pointer capture in JS handles the horizontal drag-start detection. */
+  touch-action: pan-y;
 }
 
 .wardrobe-item:nth-child(2n) { animation-delay: 0.6s; }
@@ -296,6 +300,11 @@ body {
 
 /* ── Zone animation target ── */
 .zone-pop {
+  /* transform-box + transform-origin are required for transforms on SVG <g> elements.
+     Without them, scale() originates from the SVG viewport's (0,0) corner, not the
+     element centre, making the animation invisible or wildly off. */
+  transform-box: fill-box;
+  transform-origin: center;
   animation: snapPop 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 

@@ -37,7 +37,9 @@ function getPageZones() {
   const rect = svg.getBoundingClientRect();
   const scaleX = rect.width  / 200;
   const scaleY = rect.height / 480;
-  const scale  = Math.max(scaleX, scaleY);
+  // SVG uses preserveAspectRatio="xMidYMid meet" (the default) which scales by
+  // the minimum of the two ratios, so snap radii must use Math.min.
+  const scale  = Math.min(scaleX, scaleY);
   const zones  = {};
 
   for (const [name, def] of Object.entries(ZONE_DEFS)) {
@@ -56,11 +58,16 @@ function equip(itemId, zoneName) {
   // Swap content
   zoneEl.innerHTML = `<use href="#${itemId}"/>`;
 
-  // Trigger CSS snap-pop animation (re-trigger by removing/re-adding class)
+  // Trigger CSS snap-pop animation.
+  // offsetWidth is always 0 on SVG elements so we use getAnimations() to cancel
+  // any running animation before restarting. A 1-frame rAF ensures the removal
+  // is painted before the class is re-added.
+  zoneEl.getAnimations().forEach(a => a.cancel());
   zoneEl.classList.remove('zone-pop');
-  void zoneEl.offsetWidth; // force reflow
-  zoneEl.classList.add('zone-pop');
-  zoneEl.addEventListener('animationend', () => zoneEl.classList.remove('zone-pop'), { once: true });
+  requestAnimationFrame(() => {
+    zoneEl.classList.add('zone-pop');
+    zoneEl.addEventListener('animationend', () => zoneEl.classList.remove('zone-pop'), { once: true });
+  });
 
   // Update state
   state.equipped[zoneName] = itemId;
