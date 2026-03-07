@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Doll Dress Up ✨</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Hidden SVG defs: all clothing symbols live here -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+
+    <!-- ── TOPS ── (coordinate space: 0 0 200 480) -->
+
+    <!-- Hot-pink tank top with heart -->
+    <symbol id="top-pink" viewBox="0 0 200 480" overflow="visible">
+      <!-- Shoulder straps -->
+      <rect x="84" y="152" width="13" height="22" rx="5" fill="#FF4D8D"/>
+      <rect x="103" y="152" width="13" height="22" rx="5" fill="#FF4D8D"/>
+      <!-- Body -->
+      <path d="M58,170 C46,186 44,232 46,264 C48,278 62,288 74,290
+               L126,290 C138,288 152,278 154,264 C156,232 154,186 142,170
+               C128,161 100,157 100,157 C100,157 72,161 58,170 Z"
+            fill="#FF4D8D"/>
+      <!-- Hem ruffle -->
+      <path d="M46,278 Q57,292 68,280 Q79,292 90,280 Q101,292 112,280
+               Q123,292 134,280 Q145,292 154,280 L154,290 L46,290 Z"
+            fill="#FF78A8"/>
+      <!-- Heart -->
+      <path d="M91,214 C91,205 100,202 100,208 C100,202 109,205 109,214
+               C109,222 100,229 100,229 C100,229 91,222 91,214 Z"
+            fill="white"/>
+    </symbol>
+
+    <!-- Sky-blue long-sleeve star top -->
+    <symbol id="top-blue" viewBox="0 0 200 480" overflow="visible">
+      <!-- Left sleeve -->
+      <path d="M36,178 C28,202 28,258 32,280 L52,276
+               C50,255 50,206 56,180 Z" fill="#38BDF8"/>
+      <!-- Right sleeve -->
+      <path d="M164,178 C144,206 150,255 148,276 L168,280
+               C172,258 172,202 164,178 Z" fill="#38BDF8"/>
+      <!-- Body -->
+      <path d="M56,176 C46,190 44,234 46,264 C48,278 62,288 74,290
+               L126,290 C138,288 152,278 154,264 C156,234 154,190 144,176
+               C130,164 100,160 100,160 C100,160 70,164 56,176 Z"
+            fill="#38BDF8"/>
+      <!-- Star decoration -->
+      <polygon points="100,196 104,210 119,210 107,219 111,233 100,224 89,233 93,219 81,210 96,210"
+               fill="white"/>
+    </symbol>
+
+    <!-- Purple sparkle crop top -->
+    <symbol id="top-purple" viewBox="0 0 200 480" overflow="visible">
+      <!-- Body -->
+      <path d="M60,172 C48,186 46,228 48,258 C50,272 62,282 74,284
+               L126,284 C138,282 150,272 152,258 C154,228 152,186 140,172
+               C126,163 100,159 100,159 C100,159 74,163 60,172 Z"
+            fill="#A855F7"/>
+      <!-- Sparkle dots -->
+      <circle cx="82"  cy="206" r="3.5" fill="white" opacity="0.9"/>
+      <circle cx="100" cy="196" r="3.5" fill="white" opacity="0.9"/>
+      <circle cx="118" cy="206" r="3.5" fill="white" opacity="0.9"/>
+      <circle cx="90"  cy="222" r="2.5" fill="white" opacity="0.8"/>
+      <circle cx="110" cy="222" r="2.5" fill="white" opacity="0.8"/>
+      <circle cx="100" cy="236" r="2"   fill="white" opacity="0.7"/>
+      <!-- Glitter hem -->
+      <path d="M48,268 Q60,278 72,268 Q84,278 96,268 Q108,278 120,268
+               Q132,278 144,268 Q152,278 152,284 L48,284 Z"
+            fill="#C084FC"/>
+    </symbol>
+
+    <!-- ── BOTTOMS ── -->
+
+    <!-- Bright yellow flared skirt -->
+    <symbol id="skirt-yellow" viewBox="0 0 200 480" overflow="visible">
+      <!-- Waistband -->
+      <rect x="64" y="278" width="72" height="16" rx="5" fill="#F59E0B"/>
+      <!-- Skirt flare -->
+      <path d="M64,292 C56,310 36,350 34,390
+               L166,390 C164,350 144,310 136,292 Z"
+            fill="#FBBF24"/>
+      <!-- Layer 1 ruffle -->
+      <path d="M38,354 Q68,342 100,352 Q132,342 162,354
+               L166,366 Q132,354 100,364 Q68,354 34,366 Z"
+            fill="#FCD34D"/>
+      <!-- Layer 2 ruffle -->
+      <path d="M34,372 Q68,362 100,372 Q132,362 166,372 L166,382
+               Q132,372 100,382 Q68,372 34,382 Z"
+            fill="#FDE68A"/>
+      <!-- Bow -->
+      <ellipse cx="88" cy="286" rx="10" ry="7" fill="#F59E0B"
+               transform="rotate(-25,88,286)"/>
+      <ellipse cx="112" cy="286" rx="10" ry="7" fill="#F59E0B"
+               transform="rotate(25,112,286)"/>
+      <circle cx="100" cy="286" r="6" fill="#D97706"/>
+    </symbol>
+
+    <!-- Purple straight-leg pants -->
+    <symbol id="pants-purple" viewBox="0 0 200 480" overflow="visible">
+      <!-- Waistband -->
+      <rect x="62" y="278" width="76" height="16" rx="5" fill="#6D28D9"/>
+      <!-- Left leg -->
+      <path d="M62,292 C60,330 60,378 61,428 L88,428
+               C89,378 89,330 88,292 Z" fill="#7C3AED"/>
+      <!-- Right leg -->
+      <path d="M112,292 C111,330 111,378 112,428 L139,428
+               C140,378 140,330 138,292 Z" fill="#7C3AED"/>
+      <!-- Crotch gusset -->
+      <path d="M88,292 L100,310 L112,292 Z" fill="#7C3AED"/>
+      <!-- Pocket stitching (left) -->
+      <path d="M66,308 Q76,302 85,308" stroke="#A78BFA"
+            stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <!-- Pocket stitching (right) -->
+      <path d="M115,308 Q124,302 134,308" stroke="#A78BFA"
+            stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <!-- Cuffs -->
+      <rect x="61" y="420" width="27" height="10" rx="3" fill="#6D28D9"/>
+      <rect x="112" y="420" width="27" height="10" rx="3" fill="#6D28D9"/>
+    </symbol>
+
+    <!-- ── SHOES ── -->
+
+    <!-- Red Mary Janes -->
+    <symbol id="shoes-red" viewBox="0 0 200 480" overflow="visible">
+      <!-- Left shoe body -->
+      <path d="M62,428 C58,434 56,444 58,452 Q68,458 84,456
+               Q90,452 90,444 L88,428 Z" fill="#DC2626"/>
+      <!-- Left strap -->
+      <rect x="64" y="436" width="24" height="5" rx="2" fill="#991B1B"/>
+      <!-- Left buckle -->
+      <circle cx="76" cy="438" r="3.5" fill="#EF4444"/>
+      <!-- Right shoe body -->
+      <path d="M110,428 C110,436 110,446 114,454 Q122,458 142,456
+               Q148,450 148,442 Q148,432 144,428 Z" fill="#DC2626"/>
+      <!-- Right strap -->
+      <rect x="112" y="436" width="24" height="5" rx="2" fill="#991B1B"/>
+      <!-- Right buckle -->
+      <circle cx="124" cy="438" r="3.5" fill="#EF4444"/>
+    </symbol>
+
+    <!-- Gold sparkle heels -->
+    <symbol id="shoes-gold" viewBox="0 0 200 480" overflow="visible">
+      <!-- Left shoe body -->
+      <path d="M60,428 C56,436 54,446 58,454 Q68,460 86,456
+               L88,432 L88,428 Z" fill="#F59E0B"/>
+      <!-- Left heel -->
+      <rect x="58" y="449" width="5" height="12" rx="1" fill="#92400E"/>
+      <!-- Left sparkles -->
+      <circle cx="70" cy="437" r="3"   fill="white"/>
+      <circle cx="78" cy="432" r="2.5" fill="white"/>
+      <circle cx="74" cy="446" r="2"   fill="white"/>
+      <!-- Right shoe body -->
+      <path d="M112,428 L112,432 L114,456 Q132,460 142,454
+               Q148,446 148,434 Q144,428 140,428 Z" fill="#F59E0B"/>
+      <!-- Right heel -->
+      <rect x="137" y="449" width="5" height="12" rx="1" fill="#92400E"/>
+      <!-- Right sparkles -->
+      <circle cx="122" cy="437" r="3"   fill="white"/>
+      <circle cx="130" cy="432" r="2.5" fill="white"/>
+      <circle cx="126" cy="446" r="2"   fill="white"/>
+    </symbol>
+
+    <!-- ── HAIR ACCESSORIES ── -->
+
+    <!-- Big pink bow headband -->
+    <symbol id="hair-bow" viewBox="0 0 200 480" overflow="visible">
+      <!-- Headband -->
+      <path d="M40,50 Q100,42 160,50 Q100,46 40,50 Z"
+            stroke="#FF6B9D" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <!-- Left bow wing -->
+      <ellipse cx="74" cy="36" rx="26" ry="16" fill="#FF6B9D"
+               transform="rotate(-18,74,36)"/>
+      <ellipse cx="74" cy="36" rx="19" ry="11" fill="#FF8FB3"
+               transform="rotate(-18,74,36)"/>
+      <!-- Right bow wing -->
+      <ellipse cx="126" cy="36" rx="26" ry="16" fill="#FF6B9D"
+               transform="rotate(18,126,36)"/>
+      <ellipse cx="126" cy="36" rx="19" ry="11" fill="#FF8FB3"
+               transform="rotate(18,126,36)"/>
+      <!-- Centre knot -->
+      <ellipse cx="100" cy="37" rx="11" ry="9" fill="#FF4D8D"/>
+      <!-- Shine on knot -->
+      <ellipse cx="97" cy="34" rx="4" ry="3" fill="rgba(255,255,255,0.4)"/>
+    </symbol>
+
+    <!-- Gold princess crown -->
+    <symbol id="hair-crown" viewBox="0 0 200 480" overflow="visible">
+      <!-- Crown base band -->
+      <rect x="58" y="40" width="84" height="22" rx="4" fill="#F59E0B"/>
+      <!-- Left point -->
+      <polygon points="58,40 66,14 74,40" fill="#F59E0B"/>
+      <!-- Centre point -->
+      <polygon points="84,40 100,8 116,40" fill="#F59E0B"/>
+      <!-- Right point -->
+      <polygon points="126,40 134,14 142,40" fill="#F59E0B"/>
+      <!-- Left gem -->
+      <circle cx="70" cy="25" r="5" fill="#EF4444"/>
+      <circle cx="70" cy="23" r="2" fill="rgba(255,255,255,0.6)"/>
+      <!-- Centre gem -->
+      <circle cx="100" cy="18" r="6" fill="#3B82F6"/>
+      <circle cx="100" cy="16" r="2.5" fill="rgba(255,255,255,0.6)"/>
+      <!-- Right gem -->
+      <circle cx="130" cy="25" r="5" fill="#22C55E"/>
+      <circle cx="130" cy="23" r="2" fill="rgba(255,255,255,0.6)"/>
+      <!-- Tiny diamonds on band -->
+      <circle cx="84"  cy="50" r="3" fill="#FCD34D"/>
+      <circle cx="116" cy="50" r="3" fill="#FCD34D"/>
+    </symbol>
+
+  </defs>
+</svg>
+<!-- /hidden defs -->
+
+<div id="app">
+
+  <div id="header">
+    <h1>✨ Fashion Doll ✨</h1>
+  </div>
+
+  <div id="game-area">
+
+    <!-- Left: Wardrobe panel -->
+    <div id="wardrobe-panel">
+      <div class="panel-label">👗 Wardrobe</div>
+      <div id="wardrobe-items">
+
+        <div class="wardrobe-section-label">Tops</div>
+        <div class="wardrobe-item" data-item="top-pink" data-zone="top">
+          <svg width="80" height="80" viewBox="35 148 130 148"><use href="#top-pink"/></svg>
+        </div>
+        <div class="wardrobe-item" data-item="top-blue" data-zone="top">
+          <svg width="80" height="80" viewBox="20 155 160 138"><use href="#top-blue"/></svg>
+        </div>
+        <div class="wardrobe-item" data-item="top-purple" data-zone="top">
+          <svg width="80" height="80" viewBox="35 152 130 138"><use href="#top-purple"/></svg>
+        </div>
+
+        <div class="wardrobe-section-label">Skirts &amp; Pants</div>
+        <div class="wardrobe-item" data-item="skirt-yellow" data-zone="bottom">
+          <svg width="80" height="80" viewBox="28 272 144 124"><use href="#skirt-yellow"/></svg>
+        </div>
+        <div class="wardrobe-item" data-item="pants-purple" data-zone="bottom">
+          <svg width="80" height="80" viewBox="54 272 92 164"><use href="#pants-purple"/></svg>
+        </div>
+
+        <div class="wardrobe-section-label">Shoes</div>
+        <div class="wardrobe-item" data-item="shoes-red" data-zone="shoes">
+          <svg width="80" height="80" viewBox="48 422 104 44"><use href="#shoes-red"/></svg>
+        </div>
+        <div class="wardrobe-item" data-item="shoes-gold" data-zone="shoes">
+          <svg width="80" height="80" viewBox="46 422 108 46"><use href="#shoes-gold"/></svg>
+        </div>
+
+        <div class="wardrobe-section-label">Hair</div>
+        <div class="wardrobe-item" data-item="hair-bow" data-zone="hair">
+          <svg width="80" height="80" viewBox="36 18 128 44"><use href="#hair-bow"/></svg>
+        </div>
+        <div class="wardrobe-item" data-item="hair-crown" data-zone="hair">
+          <svg width="80" height="80" viewBox="48 5 104 54"><use href="#hair-crown"/></svg>
+        </div>
+
+      </div><!-- /wardrobe-items -->
+    </div><!-- /wardrobe-panel -->
+
+    <!-- Centre: Doll stage -->
+    <div id="doll-area">
+      <svg id="doll-svg" viewBox="0 0 200 480" xmlns="http://www.w3.org/2000/svg">
+
+        <!--
+          SVG render order (bottom → top):
+          1. Arms
+          2. Legs  (covered by zone-bottom)
+          3. Feet  (covered by zone-shoes)
+          4. zone-bottom
+          5. zone-shoes
+          6. Torso
+          7. Neck
+          8. zone-top
+          9. Head + Hair
+          10. zone-hair
+          11. Face (always on top)
+        -->
+
+        <!-- 1. Arms -->
+        <path d="M55,177 C42,202 36,252 37,282 L53,285
+                 C54,258 56,210 64,184 Z" fill="#FBBF8C"/>
+        <path d="M145,177 C136,184 146,258 147,285 L163,282
+                 C164,252 158,202 145,177 Z" fill="#FBBF8C"/>
+        <!-- Hands -->
+        <ellipse cx="44" cy="290" rx="11" ry="9" fill="#FBBF8C"/>
+        <ellipse cx="156" cy="290" rx="11" ry="9" fill="#FBBF8C"/>
+
+        <!-- 2. Legs -->
+        <path d="M71,286 C69,326 68,376 68,430 L84,430
+                 C84,376 83,326 81,286 Z" fill="#FBBF8C"/>
+        <path d="M119,286 C117,326 117,376 117,430 L133,430
+                 C133,376 133,326 131,286 Z" fill="#FBBF8C"/>
+
+        <!-- 3. Feet -->
+        <path d="M66,428 C62,434 60,444 62,452 L86,452
+                 C88,444 86,434 84,428 Z" fill="#FBBF8C"/>
+        <path d="M116,428 C114,434 114,444 118,452 L136,452
+                 C138,444 140,434 134,428 Z" fill="#FBBF8C"/>
+
+        <!-- 4. zone-bottom (clothing: skirts / pants) -->
+        <g id="zone-bottom"></g>
+
+        <!-- 5. zone-shoes (clothing: shoes) -->
+        <g id="zone-shoes"></g>
+
+        <!-- 6. Torso -->
+        <path d="M58,172 C46,188 44,234 46,266 C48,280 62,290 74,292
+                 L126,292 C138,290 152,280 154,266 C156,234 154,188 142,172
+                 C128,163 100,159 100,159 C100,159 72,163 58,172 Z"
+              fill="#FBBF8C"/>
+        <!-- Belly button -->
+        <ellipse cx="100" cy="272" rx="4" ry="2.5" fill="#E8A87C" opacity="0.6"/>
+
+        <!-- 7. Neck -->
+        <rect x="88" y="148" width="24" height="26" rx="7" fill="#FBBF8C"/>
+
+        <!-- 8. zone-top (clothing: tops / shirts) -->
+        <g id="zone-top"></g>
+
+        <!-- 9a. Head -->
+        <ellipse cx="100" cy="84" rx="62" ry="68" fill="#FBBF8C"/>
+
+        <!-- 9b. Hair (dark chocolate brown) -->
+        <!-- Back volume -->
+        <path d="M38,80 C36,44 56,12 100,10 C144,12 164,44 162,80
+                 C166,56 162,26 142,14 C124,4 100,2 100,2
+                 C100,2 76,4 58,14 C38,26 34,56 38,80 Z"
+              fill="#3D2314"/>
+        <!-- Side sweeps -->
+        <path d="M38,76 C30,52 34,26 50,16 C36,32 34,58 42,84 Z" fill="#3D2314"/>
+        <path d="M162,76 C170,84 166,32 150,16 C166,26 170,52 162,76 Z" fill="#3D2314"/>
+        <!-- Forehead strands -->
+        <path d="M72,20 Q82,28 76,40" stroke="#3D2314" stroke-width="5"
+              fill="none" stroke-linecap="round"/>
+        <path d="M100,14 Q104,26 100,36" stroke="#3D2314" stroke-width="5"
+              fill="none" stroke-linecap="round"/>
+        <path d="M128,20 Q118,28 124,40" stroke="#3D2314" stroke-width="5"
+              fill="none" stroke-linecap="round"/>
+
+        <!-- Cheeks blush -->
+        <ellipse cx="66" cy="116" rx="14" ry="10" fill="#FFB3C6" opacity="0.45"/>
+        <ellipse cx="134" cy="116" rx="14" ry="10" fill="#FFB3C6" opacity="0.45"/>
+
+        <!-- 10. zone-hair (accessories: bow, crown) -->
+        <g id="zone-hair"></g>
+
+        <!-- 11. Face (always rendered last / on top) -->
+
+        <!-- Eye-shadow (makeup target) -->
+        <ellipse id="eye-left-shadow"  cx="76"  cy="94" rx="19" ry="13" fill="#C084FC"/>
+        <ellipse id="eye-right-shadow" cx="124" cy="94" rx="19" ry="13" fill="#C084FC"/>
+
+        <!-- Eye whites -->
+        <ellipse cx="76"  cy="96" rx="17" ry="15" fill="white"/>
+        <ellipse cx="124" cy="96" rx="17" ry="15" fill="white"/>
+
+        <!-- Iris -->
+        <ellipse cx="76"  cy="98" rx="10" ry="12" fill="#4F46E5"/>
+        <ellipse cx="124" cy="98" rx="10" ry="12" fill="#4F46E5"/>
+
+        <!-- Pupils -->
+        <ellipse cx="76"  cy="100" rx="5.5" ry="6.5" fill="#0F0800"/>
+        <ellipse cx="124" cy="100" rx="5.5" ry="6.5" fill="#0F0800"/>
+
+        <!-- Eye highlights -->
+        <circle cx="79"  cy="95" r="3"   fill="white"/>
+        <circle cx="127" cy="95" r="3"   fill="white"/>
+        <circle cx="73"  cy="103" r="1.5" fill="white"/>
+        <circle cx="121" cy="103" r="1.5" fill="white"/>
+
+        <!-- Top lashes – left eye -->
+        <line x1="59"  y1="86"  x2="61"  y2="79"  stroke="#0F0800" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="65"  y1="83"  x2="65"  y2="75"  stroke="#0F0800" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="71"  y1="82"  x2="71"  y2="73"  stroke="#0F0800" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="77"  y1="82"  x2="77"  y2="73"  stroke="#0F0800" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="83"  y1="83"  x2="84"  y2="75"  stroke="#0F0800" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="89"  y1="86"  x2="91"  y2="79"  stroke="#0F0800" stroke-width="2.2" stroke-linecap="round"/>
+
+        <!-- Top lashes – right eye -->
+        <line x1="141" y1="86"  x2="139" y2="79"  stroke="#0F0800" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="135" y1="83"  x2="135" y2="75"  stroke="#0F0800" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="129" y1="82"  x2="129" y2="73"  stroke="#0F0800" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="123" y1="82"  x2="123" y2="73"  stroke="#0F0800" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="117" y1="83"  x2="116" y2="75"  stroke="#0F0800" stroke-width="2.2" stroke-linecap="round"/>
+        <line x1="111" y1="86"  x2="109" y2="79"  stroke="#0F0800" stroke-width="2.2" stroke-linecap="round"/>
+
+        <!-- Eyebrows -->
+        <path d="M57,79 Q76,70 93,76" stroke="#3D2314" stroke-width="3.5"
+              fill="none" stroke-linecap="round"/>
+        <path d="M107,76 Q124,70 143,79" stroke="#3D2314" stroke-width="3.5"
+              fill="none" stroke-linecap="round"/>
+
+        <!-- Nose (subtle) -->
+        <ellipse cx="96"  cy="120" rx="3" ry="2" fill="#E8A87C"/>
+        <ellipse cx="104" cy="120" rx="3" ry="2" fill="#E8A87C"/>
+
+        <!-- Lips (split into upper + lower so fill change looks natural) -->
+        <path id="lips-upper"
+              d="M84,130 Q92,124 100,126 Q108,124 116,130
+                 Q108,134 100,133 Q92,134 84,130 Z"
+              fill="#FF4D6D"/>
+        <path id="lips-lower"
+              d="M84,130 Q92,144 100,146 Q108,144 116,130
+                 Q108,137 100,136 Q92,137 84,130 Z"
+              fill="#FF4D6D"/>
+        <!-- Lip cupid's bow highlight -->
+        <ellipse cx="100" cy="127" rx="6" ry="2" fill="rgba(255,255,255,0.3)"/>
+        <!-- Lower lip shine -->
+        <ellipse cx="100" cy="139" rx="7" ry="2.5" fill="rgba(255,255,255,0.25)"/>
+
+      </svg><!-- /doll-svg -->
+
+      <!-- Snap indicator rings (shown when dragging near a zone) -->
+      <div class="snap-ring" id="snap-ring-top"></div>
+      <div class="snap-ring" id="snap-ring-bottom"></div>
+      <div class="snap-ring" id="snap-ring-shoes"></div>
+      <div class="snap-ring" id="snap-ring-hair"></div>
+
+    </div><!-- /doll-area -->
+
+    <!-- Right: Makeup panel -->
+    <div id="makeup-panel">
+      <div class="panel-label">💄 Makeup</div>
+
+      <div class="makeup-section">
+        <div class="makeup-label">👄 Lips</div>
+        <div class="swatches-row">
+          <div class="swatch" data-target="lips" data-colour="#FF4D6D" style="background:#FF4D6D"></div>
+          <div class="swatch" data-target="lips" data-colour="#FF8FA3" style="background:#FF8FA3"></div>
+          <div class="swatch" data-target="lips" data-colour="#C77DFF" style="background:#C77DFF"></div>
+          <div class="swatch" data-target="lips" data-colour="#FF9A3C" style="background:#FF9A3C"></div>
+          <div class="swatch" data-target="lips" data-colour="#E91E8C" style="background:#E91E8C"></div>
+        </div>
+      </div>
+
+      <div class="makeup-section">
+        <div class="makeup-label">👁 Eyes</div>
+        <div class="swatches-row">
+          <div class="swatch" data-target="eyeshadow" data-colour="#C084FC" style="background:#C084FC"></div>
+          <div class="swatch" data-target="eyeshadow" data-colour="#60D5FA" style="background:#60D5FA"></div>
+          <div class="swatch" data-target="eyeshadow" data-colour="#84FAB0" style="background:#84FAB0"></div>
+          <div class="swatch" data-target="eyeshadow" data-colour="#FFD166" style="background:#FFD166"></div>
+          <div class="swatch" data-target="eyeshadow" data-colour="#FF6B9D" style="background:#FF6B9D"></div>
+        </div>
+      </div>
+
+      <div class="makeup-section">
+        <div class="makeup-label">✨ Reset</div>
+        <button id="reset-btn">Start Over</button>
+      </div>
+    </div><!-- /makeup-panel -->
+
+  </div><!-- /game-area -->
+</div><!-- /app -->
+
+<script src="game.js"></script>
+</body>
+</html>

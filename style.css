@@ -1,0 +1,335 @@
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #FFD6E7 0%, #E0C8F8 50%, #B8E8FF 100%);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden;
+  user-select: none;
+}
+
+/* ── App shell ── */
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* ── Header ── */
+#header {
+  text-align: center;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid rgba(255, 107, 157, 0.3);
+  flex-shrink: 0;
+}
+
+#header h1 {
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: #FF4D8D;
+  text-shadow: 2px 2px 0 rgba(255, 255, 255, 0.6),
+               0 0 20px rgba(255, 77, 141, 0.3);
+  letter-spacing: 3px;
+}
+
+/* ── Game area ── */
+#game-area {
+  display: flex;
+  flex: 1;
+  gap: 10px;
+  padding: 10px;
+  overflow: hidden;
+  align-items: stretch;
+}
+
+/* ── Shared panel styles ── */
+.panel-label {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #FF4D8D;
+  text-align: center;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+/* ── Wardrobe Panel ── */
+#wardrobe-panel {
+  width: 148px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 22px;
+  border: 3px solid #FFB3C6;
+  padding: 10px 6px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(255, 107, 157, 0.18);
+}
+
+#wardrobe-items {
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+  scrollbar-color: #FFB3C6 transparent;
+}
+
+#wardrobe-items::-webkit-scrollbar {
+  width: 5px;
+}
+#wardrobe-items::-webkit-scrollbar-thumb {
+  background: #FFB3C6;
+  border-radius: 4px;
+}
+
+.wardrobe-section-label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #FF6B9D;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  width: 100%;
+  text-align: center;
+  border-bottom: 1.5px solid #FFE4EE;
+  padding-bottom: 3px;
+  margin-top: 6px;
+}
+
+.wardrobe-item {
+  width: 92px;
+  height: 92px;
+  border-radius: 18px;
+  background: rgba(255, 220, 235, 0.25);
+  border: 2.5px solid #FFB3C6;
+  cursor: grab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  animation: float 3.2s ease-in-out infinite;
+  touch-action: none;
+}
+
+.wardrobe-item:nth-child(2n) { animation-delay: 0.6s; }
+.wardrobe-item:nth-child(3n) { animation-delay: 1.2s; }
+.wardrobe-item:nth-child(4n) { animation-delay: 0.9s; }
+
+.wardrobe-item:hover {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 8px 22px rgba(255, 77, 141, 0.32);
+  border-color: #FF6B9D;
+  animation: none;
+}
+
+.wardrobe-item:active {
+  cursor: grabbing;
+}
+
+.wardrobe-item.equipped {
+  border-color: #A855F7;
+  background: rgba(168, 85, 247, 0.12);
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.3);
+}
+
+/* ── Doll Stage ── */
+#doll-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+#doll-svg {
+  height: min(82vh, 560px);
+  width: auto;
+  filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.14));
+  transition: filter 0.35s ease;
+}
+
+#doll-svg.glow {
+  filter: drop-shadow(0 10px 28px rgba(255, 77, 141, 0.55));
+}
+
+/* ── Snap indicator rings ── */
+.snap-ring {
+  position: fixed;
+  border-radius: 50%;
+  border: 3px dashed #FF6B9D;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+  transform: translate(-50%, -50%);
+}
+
+.snap-ring.visible {
+  opacity: 0.75;
+  animation: ringPulse 0.55s ease-in-out infinite alternate;
+}
+
+/* ── Makeup Panel ── */
+#makeup-panel {
+  width: 122px;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 22px;
+  border: 3px solid #C3B1E1;
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-shadow: 0 4px 20px rgba(140, 90, 220, 0.15);
+}
+
+#makeup-panel .panel-label {
+  color: #7C3AED;
+}
+
+.makeup-section {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.makeup-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #7C3AED;
+  text-align: center;
+}
+
+.swatches-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  justify-content: center;
+}
+
+.swatch {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 3px solid white;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.swatch:hover {
+  transform: scale(1.22);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+}
+
+.swatch.selected {
+  border-color: #1A0A00;
+  transform: scale(1.12);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+#reset-btn {
+  background: linear-gradient(135deg, #FF6B9D, #A855F7);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 10px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 3px 10px rgba(168, 85, 247, 0.38);
+  letter-spacing: 0.5px;
+}
+
+#reset-btn:hover {
+  transform: scale(1.06);
+  box-shadow: 0 5px 16px rgba(168, 85, 247, 0.48);
+}
+
+#reset-btn:active {
+  transform: scale(0.97);
+}
+
+/* ── Drag clone ── */
+#drag-clone {
+  position: fixed;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.88;
+  transform: translate(-50%, -50%) scale(1.12);
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.28));
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+#drag-clone.fading {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
+}
+
+/* ── Sparkles ── */
+.sparkle-container {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999;
+  top: 0;
+  left: 0;
+}
+
+.sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: sparkleFly 0.65s ease-out forwards;
+}
+
+/* ── Zone animation target ── */
+.zone-pop {
+  animation: snapPop 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ══════════════════════════════
+   Keyframe Animations
+══════════════════════════════ */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-7px); }
+}
+
+@keyframes snapPop {
+  0%   { transform: scale(1.5); opacity: 0.6; }
+  55%  { transform: scale(0.91); opacity: 1;  }
+  100% { transform: scale(1);   opacity: 1;  }
+}
+
+@keyframes sparkleFly {
+  0%   { opacity: 1; transform: translate(0, 0) scale(1.3); }
+  100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0); }
+}
+
+@keyframes ringPulse {
+  0%   { border-color: #FF6B9D; transform: translate(-50%, -50%) scale(0.93); }
+  100% { border-color: #A855F7; transform: translate(-50%, -50%) scale(1.07); }
+}
+
+/* ── Responsive narrow screens ── */
+@media (max-width: 580px) {
+  #header h1       { font-size: 1.3rem; }
+  #wardrobe-panel  { width: 102px; }
+  #makeup-panel    { width: 96px; }
+  .wardrobe-item   { width: 72px; height: 72px; }
+  .swatch          { width: 28px; height: 28px; }
+  #doll-svg        { height: min(74vh, 420px); }
+}
