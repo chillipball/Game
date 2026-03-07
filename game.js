@@ -298,7 +298,8 @@ function cleanupDrag() {
    Makeup swatches
 ══════════════════════════════════════ */
 document.querySelectorAll('.swatch').forEach(sw => {
-  sw.addEventListener('click', () => {
+  sw.addEventListener('pointerdown', (e) => {
+    e.stopPropagation();
     const target = sw.dataset.target;
     const colour = sw.dataset.colour;
 

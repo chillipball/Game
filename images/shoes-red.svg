@@ -1,17 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="48 422 104 44">
-  <!-- Red Mary Janes -->
-  <!-- Left shoe body -->
-  <path d="M62,428 C58,434 56,444 58,452 Q68,458 84,456
-           Q90,452 90,444 L88,428 Z" fill="#DC2626"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+  <!-- Left shoe -->
+  <path d="M6,36 C4,44 5,58 8,64 Q14,70 24,68
+           Q30,65 30,56 L28,36 Z"
+        fill="#DC2626"/>
   <!-- Left strap -->
-  <rect x="64" y="436" width="24" height="5" rx="2" fill="#991B1B"/>
-  <!-- Left buckle -->
-  <circle cx="76" cy="438" r="3.5" fill="#EF4444"/>
-  <!-- Right shoe body -->
-  <path d="M110,428 C110,436 110,446 114,454 Q122,458 142,456
-           Q148,450 148,442 Q148,432 144,428 Z" fill="#DC2626"/>
+  <rect x="8"  y="46" width="20" height="6" rx="3" fill="#991B1B"/>
+  <circle cx="18" cy="49" r="3.5" fill="#EF4444"/>
+  <!-- Right shoe -->
+  <path d="M52,36 L50,56 Q50,65 56,68
+           Q66,70 72,64 C75,58 76,44 74,36 Z"
+        fill="#DC2626"/>
   <!-- Right strap -->
-  <rect x="112" y="436" width="24" height="5" rx="2" fill="#991B1B"/>
-  <!-- Right buckle -->
-  <circle cx="124" cy="438" r="3.5" fill="#EF4444"/>
+  <rect x="52" y="46" width="20" height="6" rx="3" fill="#991B1B"/>
+  <circle cx="62" cy="49" r="3.5" fill="#EF4444"/>
 </svg>

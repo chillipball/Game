@@ -1,19 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="35 152 130 138">
-  <!-- Purple sparkle crop top -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
   <!-- Body -->
-  <path d="M60,172 C48,186 46,228 48,258 C50,272 62,282 74,284
-           L126,284 C138,282 150,272 152,258 C154,228 152,186 140,172
-           C126,163 100,159 100,159 C100,159 74,163 60,172 Z"
+  <path d="M16,20 C11,28 10,46 11,56 C12,62 20,68 27,69
+           L53,69 C60,68 68,62 69,56 C70,46 69,28 64,20
+           C56,14 40,11 40,11 C40,11 24,14 16,20 Z"
         fill="#A855F7"/>
   <!-- Sparkle dots -->
-  <circle cx="82"  cy="206" r="3.5" fill="white" opacity="0.9"/>
-  <circle cx="100" cy="196" r="3.5" fill="white" opacity="0.9"/>
-  <circle cx="118" cy="206" r="3.5" fill="white" opacity="0.9"/>
-  <circle cx="90"  cy="222" r="2.5" fill="white" opacity="0.8"/>
-  <circle cx="110" cy="222" r="2.5" fill="white" opacity="0.8"/>
-  <circle cx="100" cy="236" r="2"   fill="white" opacity="0.7"/>
+  <circle cx="29" cy="36" r="3.5" fill="white" opacity="0.9"/>
+  <circle cx="40" cy="30" r="3.5" fill="white" opacity="0.9"/>
+  <circle cx="51" cy="36" r="3.5" fill="white" opacity="0.9"/>
+  <circle cx="34" cy="48" r="2.5" fill="white" opacity="0.8"/>
+  <circle cx="46" cy="48" r="2.5" fill="white" opacity="0.8"/>
   <!-- Glitter hem -->
-  <path d="M48,268 Q60,278 72,268 Q84,278 96,268 Q108,278 120,268
-           Q132,278 144,268 Q152,278 152,284 L48,284 Z"
+  <path d="M11,58 Q18,66 25,59 Q32,66 39,59 Q46,66 53,59
+           Q60,66 67,59 Q70,64 69,69 L11,69 Z"
         fill="#C084FC"/>
 </svg>

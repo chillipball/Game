@@ -1,23 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="28 272 144 124">
-  <!-- Bright yellow flared skirt -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
   <!-- Waistband -->
-  <rect x="64" y="278" width="72" height="16" rx="5" fill="#F59E0B"/>
+  <rect x="20" y="6" width="40" height="12" rx="5" fill="#F59E0B"/>
   <!-- Skirt flare -->
-  <path d="M64,292 C56,310 36,350 34,390
-           L166,390 C164,350 144,310 136,292 Z"
+  <path d="M20,17 C15,26 6,48 4,72 L76,72 C74,48 65,26 60,17 Z"
         fill="#FBBF24"/>
-  <!-- Layer 1 ruffle -->
-  <path d="M38,354 Q68,342 100,352 Q132,342 162,354
-           L166,366 Q132,354 100,364 Q68,354 34,366 Z"
+  <!-- Ruffle layer 1 -->
+  <path d="M5,55 Q20,48 40,54 Q60,48 75,55 L76,62
+           Q60,56 40,62 Q20,56 4,62 Z"
         fill="#FCD34D"/>
-  <!-- Layer 2 ruffle -->
-  <path d="M34,372 Q68,362 100,372 Q132,362 166,372 L166,382
-           Q132,372 100,382 Q68,372 34,382 Z"
+  <!-- Ruffle layer 2 -->
+  <path d="M4,64 Q22,58 40,64 Q58,58 76,64 L76,72
+           Q58,66 40,72 Q22,66 4,72 Z"
         fill="#FDE68A"/>
-  <!-- Bow -->
-  <ellipse cx="88" cy="286" rx="10" ry="7" fill="#F59E0B"
-           transform="rotate(-25,88,286)"/>
-  <ellipse cx="112" cy="286" rx="10" ry="7" fill="#F59E0B"
-           transform="rotate(25,112,286)"/>
-  <circle cx="100" cy="286" r="6" fill="#D97706"/>
+  <!-- Bow left -->
+  <ellipse cx="34" cy="12" rx="8" ry="5" fill="#F59E0B" transform="rotate(-20,34,12)"/>
+  <!-- Bow right -->
+  <ellipse cx="46" cy="12" rx="8" ry="5" fill="#F59E0B" transform="rotate(20,46,12)"/>
+  <!-- Bow knot -->
+  <circle cx="40" cy="12" r="4.5" fill="#D97706"/>
 </svg>

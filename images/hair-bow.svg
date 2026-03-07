@@ -1,20 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="36 18 128 44">
-  <!-- Big pink bow headband -->
-  <!-- Headband -->
-  <path d="M40,50 Q100,42 160,50 Q100,46 40,50 Z"
-        stroke="#FF6B9D" stroke-width="7" fill="none" stroke-linecap="round"/>
-  <!-- Left bow wing -->
-  <ellipse cx="74" cy="36" rx="26" ry="16" fill="#FF6B9D"
-           transform="rotate(-18,74,36)"/>
-  <ellipse cx="74" cy="36" rx="19" ry="11" fill="#FF8FB3"
-           transform="rotate(-18,74,36)"/>
-  <!-- Right bow wing -->
-  <ellipse cx="126" cy="36" rx="26" ry="16" fill="#FF6B9D"
-           transform="rotate(18,126,36)"/>
-  <ellipse cx="126" cy="36" rx="19" ry="11" fill="#FF8FB3"
-           transform="rotate(18,126,36)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+  <!-- Left wing -->
+  <ellipse cx="24" cy="40" rx="22" ry="14" fill="#FF6B9D"/>
+  <ellipse cx="24" cy="40" rx="16" ry="9"  fill="#FF8FB3"/>
+  <!-- Right wing -->
+  <ellipse cx="56" cy="40" rx="22" ry="14" fill="#FF6B9D"/>
+  <ellipse cx="56" cy="40" rx="16" ry="9"  fill="#FF8FB3"/>
   <!-- Centre knot -->
-  <ellipse cx="100" cy="37" rx="11" ry="9" fill="#FF4D8D"/>
-  <!-- Shine on knot -->
-  <ellipse cx="97" cy="34" rx="4" ry="3" fill="rgba(255,255,255,0.4)"/>
+  <ellipse cx="40" cy="40" rx="10" ry="9" fill="#FF4D8D"/>
+  <!-- Knot shine -->
+  <ellipse cx="37" cy="37" rx="4" ry="3"  fill="rgba(255,255,255,0.4)"/>
+  <!-- Ribbon tails -->
+  <path d="M36,46 Q28,58 22,70" stroke="#FF6B9D" stroke-width="5"
+        fill="none" stroke-linecap="round"/>
+  <path d="M44,46 Q52,58 58,70" stroke="#FF6B9D" stroke-width="5"
+        fill="none" stroke-linecap="round"/>
 </svg>
