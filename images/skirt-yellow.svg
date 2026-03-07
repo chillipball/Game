@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="28 272 144 124">
+  <!-- Bright yellow flared skirt -->
+  <!-- Waistband -->
+  <rect x="64" y="278" width="72" height="16" rx="5" fill="#F59E0B"/>
+  <!-- Skirt flare -->
+  <path d="M64,292 C56,310 36,350 34,390
+           L166,390 C164,350 144,310 136,292 Z"
+        fill="#FBBF24"/>
+  <!-- Layer 1 ruffle -->
+  <path d="M38,354 Q68,342 100,352 Q132,342 162,354
+           L166,366 Q132,354 100,364 Q68,354 34,366 Z"
+        fill="#FCD34D"/>
+  <!-- Layer 2 ruffle -->
+  <path d="M34,372 Q68,362 100,372 Q132,362 166,372 L166,382
+           Q132,372 100,382 Q68,372 34,382 Z"
+        fill="#FDE68A"/>
+  <!-- Bow -->
+  <ellipse cx="88" cy="286" rx="10" ry="7" fill="#F59E0B"
+           transform="rotate(-25,88,286)"/>
+  <ellipse cx="112" cy="286" rx="10" ry="7" fill="#F59E0B"
+           transform="rotate(25,112,286)"/>
+  <circle cx="100" cy="286" r="6" fill="#D97706"/>
+</svg>

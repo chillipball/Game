@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="48 5 104 54">
+  <!-- Gold princess crown -->
+  <!-- Crown base band -->
+  <rect x="58" y="40" width="84" height="22" rx="4" fill="#F59E0B"/>
+  <!-- Left point -->
+  <polygon points="58,40 66,14 74,40" fill="#F59E0B"/>
+  <!-- Centre point -->
+  <polygon points="84,40 100,8 116,40" fill="#F59E0B"/>
+  <!-- Right point -->
+  <polygon points="126,40 134,14 142,40" fill="#F59E0B"/>
+  <!-- Left gem -->
+  <circle cx="70" cy="25" r="5" fill="#EF4444"/>
+  <circle cx="70" cy="23" r="2" fill="rgba(255,255,255,0.6)"/>
+  <!-- Centre gem -->
+  <circle cx="100" cy="18" r="6" fill="#3B82F6"/>
+  <circle cx="100" cy="16" r="2.5" fill="rgba(255,255,255,0.6)"/>
+  <!-- Right gem -->
+  <circle cx="130" cy="25" r="5" fill="#22C55E"/>
+  <circle cx="130" cy="23" r="2" fill="rgba(255,255,255,0.6)"/>
+  <!-- Tiny diamonds on band -->
+  <circle cx="84"  cy="50" r="3" fill="#FCD34D"/>
+  <circle cx="116" cy="50" r="3" fill="#FCD34D"/>
+</svg>

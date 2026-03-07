@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="54 272 92 164">
+  <!-- Purple straight-leg pants -->
+  <!-- Waistband -->
+  <rect x="62" y="278" width="76" height="16" rx="5" fill="#6D28D9"/>
+  <!-- Left leg -->
+  <path d="M62,292 C60,330 60,378 61,428 L88,428
+           C89,378 89,330 88,292 Z" fill="#7C3AED"/>
+  <!-- Right leg -->
+  <path d="M112,292 C111,330 111,378 112,428 L139,428
+           C140,378 140,330 138,292 Z" fill="#7C3AED"/>
+  <!-- Crotch gusset -->
+  <path d="M88,292 L100,310 L112,292 Z" fill="#7C3AED"/>
+  <!-- Pocket stitching (left) -->
+  <path d="M66,308 Q76,302 85,308" stroke="#A78BFA"
+        stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Pocket stitching (right) -->
+  <path d="M115,308 Q124,302 134,308" stroke="#A78BFA"
+        stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Cuffs -->
+  <rect x="61" y="420" width="27" height="10" rx="3" fill="#6D28D9"/>
+  <rect x="112" y="420" width="27" height="10" rx="3" fill="#6D28D9"/>
+</svg>

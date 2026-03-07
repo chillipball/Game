@@ -128,15 +128,29 @@ function spawnSparkles(cx, cy) {
 function createDragClone(itemEl, x, y) {
   removeDragClone();
 
-  const clone  = document.createElement('div');
-  clone.id     = 'drag-clone';
-  const svgEl  = itemEl.querySelector('svg');
-  clone.innerHTML = svgEl.outerHTML;
+  const clone = document.createElement('div');
+  clone.id    = 'drag-clone';
 
-  clone.style.width  = svgEl.getAttribute('width')  + 'px';
-  clone.style.height = svgEl.getAttribute('height') + 'px';
-  clone.style.left   = x + 'px';
-  clone.style.top    = y + 'px';
+  const imgEl = itemEl.querySelector('img');
+  if (imgEl) {
+    const img    = document.createElement('img');
+    img.src      = imgEl.src;
+    img.width    = imgEl.width  || 80;
+    img.height   = imgEl.height || 80;
+    img.alt      = imgEl.alt;
+    img.style.pointerEvents = 'none';
+    clone.appendChild(img);
+    clone.style.width  = img.width  + 'px';
+    clone.style.height = img.height + 'px';
+  } else {
+    const svgEl = itemEl.querySelector('svg');
+    clone.innerHTML    = svgEl.outerHTML;
+    clone.style.width  = svgEl.getAttribute('width')  + 'px';
+    clone.style.height = svgEl.getAttribute('height') + 'px';
+  }
+
+  clone.style.left = x + 'px';
+  clone.style.top  = y + 'px';
 
   document.body.appendChild(clone);
   return clone;
