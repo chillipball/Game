@@ -184,7 +184,7 @@ function getSnapZoneName(px, py, targetZone) {
 /* ══════════════════════════════════════
    Drag state
 ══════════════════════════════════════ */
-let drag = null; // { itemId, zone, clone, startX, startY, moved, done }
+let drag = null; // { itemId, zone, clone, startX, startY, moved, done, pointerId, itemEl }
 
 function onPointerDown(e) {
   if (e.button !== undefined && e.button !== 0) return; // primary button only
@@ -194,17 +194,20 @@ function onPointerDown(e) {
   const clone  = createDragClone(itemEl, e.clientX, e.clientY);
 
   drag = {
-    itemId: itemEl.dataset.item,
-    zone:   itemEl.dataset.zone,
+    itemId:    itemEl.dataset.item,
+    zone:      itemEl.dataset.zone,
     clone,
-    startX: e.clientX,
-    startY: e.clientY,
-    moved:  false,
-    done:   false,
+    startX:    e.clientX,
+    startY:    e.clientY,
+    moved:     false,
+    done:      false,
+    pointerId: e.pointerId,
+    itemEl,
   };
 
-  document.addEventListener('pointermove', onPointerMove, { passive: false });
-  document.addEventListener('pointerup',   onPointerUp);
+  document.addEventListener('pointermove',  onPointerMove,  { passive: false });
+  document.addEventListener('pointerup',    onPointerUp);
+  document.addEventListener('pointercancel', onPointerCancel);
 }
 
 function onPointerMove(e) {
@@ -216,6 +219,9 @@ function onPointerMove(e) {
 
   if (!drag.moved && Math.hypot(px - drag.startX, py - drag.startY) > 7) {
     drag.moved = true;
+    // Capture pointer so the element keeps receiving events even if the
+    // finger/cursor leaves the element (critical for touch drag reliability).
+    try { drag.itemEl.setPointerCapture(drag.pointerId); } catch (_) {}
   }
 
   // Move clone
@@ -236,6 +242,12 @@ function onPointerMove(e) {
   } else {
     hideAllSnapRings();
   }
+}
+
+function onPointerCancel() {
+  removeDragClone();
+  hideAllSnapRings();
+  cleanupDrag();
 }
 
 function onPointerUp(e) {
@@ -262,8 +274,9 @@ function onPointerUp(e) {
 }
 
 function cleanupDrag() {
-  document.removeEventListener('pointermove', onPointerMove);
-  document.removeEventListener('pointerup',   onPointerUp);
+  document.removeEventListener('pointermove',   onPointerMove);
+  document.removeEventListener('pointerup',     onPointerUp);
+  document.removeEventListener('pointercancel', onPointerCancel);
   drag = null;
 }
 
