@@ -210,6 +210,156 @@
       <circle cx="116" cy="50" r="3" fill="#FCD34D"/>
     </g>
 
+    <!-- clipPath for rainbow tee stripes -->
+    <clipPath id="clip-rainbow">
+      <path d="M56,176 C46,190 44,234 46,264 C48,278 62,288 74,290
+               L126,290 C138,288 152,278 154,264 C156,234 154,190 144,176
+               C130,164 100,160 100,160 C100,160 70,164 56,176 Z"/>
+    </clipPath>
+
+    <!-- ── NEW TOPS ── -->
+
+    <!-- Rainbow stripe t-shirt -->
+    <g id="top-rainbow">
+      <!-- White tee body -->
+      <path d="M56,176 C46,190 44,234 46,264 C48,278 62,288 74,290
+               L126,290 C138,288 152,278 154,264 C156,234 154,190 144,176
+               C130,164 100,160 100,160 C100,160 70,164 56,176 Z"
+            fill="white"/>
+      <!-- Short sleeves -->
+      <path d="M36,178 C28,198 30,220 34,228 L52,222 C50,214 50,200 56,180 Z" fill="white"/>
+      <path d="M164,178 C172,198 170,220 166,228 L148,222 C150,214 150,200 144,180 Z" fill="white"/>
+      <!-- Rainbow stripes clipped to body -->
+      <g clip-path="url(#clip-rainbow)">
+        <rect x="44" y="184" width="112" height="15" fill="#FF4444"/>
+        <rect x="44" y="199" width="112" height="15" fill="#FF8800"/>
+        <rect x="44" y="214" width="112" height="15" fill="#FFD700"/>
+        <rect x="44" y="229" width="112" height="15" fill="#44BB44"/>
+        <rect x="44" y="244" width="112" height="15" fill="#4488FF"/>
+        <rect x="44" y="259" width="112" height="16" fill="#9944FF"/>
+      </g>
+    </g>
+
+    <!-- ── NEW BOTTOMS ── -->
+
+    <!-- Pink tutu skirt -->
+    <g id="skirt-pink">
+      <!-- Waistband -->
+      <rect x="64" y="278" width="72" height="16" rx="5" fill="#9D174D"/>
+      <!-- Main flare -->
+      <path d="M62,292 C52,312 30,356 26,406 L174,406 C170,356 148,312 138,292 Z" fill="#F9A8D4"/>
+      <!-- Tutu ruffle 1 -->
+      <path d="M28,348 Q64,334 100,346 Q136,334 172,348 Q136,360 100,356 Q64,360 28,348 Z" fill="#F472B6"/>
+      <!-- Tutu ruffle 2 -->
+      <path d="M26,370 Q64,358 100,370 Q136,358 174,370 Q136,382 100,380 Q64,382 26,370 Z" fill="#EC4899"/>
+      <!-- Tutu ruffle 3 -->
+      <path d="M26,390 Q64,380 100,390 Q136,380 174,390 Q136,402 100,400 Q64,402 26,390 Z" fill="#DB2777" opacity="0.85"/>
+      <!-- Bow -->
+      <ellipse cx="88" cy="286" rx="10" ry="7" fill="#831843" transform="rotate(-25,88,286)"/>
+      <ellipse cx="112" cy="286" rx="10" ry="7" fill="#831843" transform="rotate(25,112,286)"/>
+      <circle cx="100" cy="286" r="6" fill="#6B0C39"/>
+    </g>
+
+    <!-- Blue denim jeans -->
+    <g id="pants-denim">
+      <!-- Waistband -->
+      <rect x="62" y="278" width="76" height="18" rx="5" fill="#1E40AF"/>
+      <!-- Belt loops -->
+      <rect x="74" y="276" width="8" height="10" rx="2" fill="#2563EB"/>
+      <rect x="118" y="276" width="8" height="10" rx="2" fill="#2563EB"/>
+      <!-- Left leg -->
+      <path d="M62,294 C60,332 60,380 61,430 L88,430 C89,380 89,332 88,294 Z" fill="#3B82F6"/>
+      <!-- Right leg -->
+      <path d="M112,294 C111,332 111,380 112,430 L139,430 C140,380 140,332 138,294 Z" fill="#3B82F6"/>
+      <!-- Crotch -->
+      <path d="M88,294 L100,312 L112,294 Z" fill="#3B82F6"/>
+      <!-- Seam stitching -->
+      <line x1="75" y1="294" x2="74" y2="428" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-dasharray="5,5"/>
+      <line x1="125" y1="294" x2="126" y2="428" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-dasharray="5,5"/>
+      <!-- Pocket stitching -->
+      <path d="M66,308 Q76,302 85,308" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <!-- Rolled cuffs -->
+      <rect x="61" y="420" width="27" height="12" rx="3" fill="#1E40AF"/>
+      <rect x="112" y="420" width="27" height="12" rx="3" fill="#1E40AF"/>
+      <rect x="61" y="420" width="27" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
+      <rect x="112" y="420" width="27" height="4" rx="2" fill="rgba(255,255,255,0.2)"/>
+    </g>
+
+    <!-- ── NEW SHOES ── -->
+
+    <!-- White chunky sneakers -->
+    <g id="shoes-white">
+      <!-- Left shoe body -->
+      <path d="M60,428 C56,436 54,448 58,456 Q68,464 88,462 Q94,456 92,446 L90,428 Z" fill="white"/>
+      <!-- Left pink sole -->
+      <path d="M54,452 C54,458 60,464 70,466 Q80,468 88,462 Q94,458 92,454 Q78,458 64,456 Z" fill="#FF6B9D"/>
+      <!-- Left laces -->
+      <line x1="64" y1="438" x2="88" y2="436" stroke="#FF6B9D" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="64" y1="446" x2="88" y2="444" stroke="#FFADD2" stroke-width="2" stroke-linecap="round"/>
+      <!-- Left outline -->
+      <path d="M60,428 C56,436 54,448 58,456 Q68,464 88,462 Q94,456 92,446 L90,428 Z" fill="none" stroke="#E5E7EB" stroke-width="1.5"/>
+      <!-- Right shoe body -->
+      <path d="M110,428 L110,434 L112,462 Q128,466 148,462 Q154,454 154,444 Q152,434 148,428 Z" fill="white"/>
+      <!-- Right pink sole -->
+      <path d="M108,456 C108,462 116,468 128,468 Q140,468 148,462 Q154,458 154,454 Q140,458 122,456 Z" fill="#FF6B9D"/>
+      <!-- Right laces -->
+      <line x1="114" y1="438" x2="152" y2="436" stroke="#FF6B9D" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="114" y1="446" x2="152" y2="444" stroke="#FFADD2" stroke-width="2" stroke-linecap="round"/>
+      <!-- Right outline -->
+      <path d="M110,428 L110,434 L112,462 Q128,466 148,462 Q154,454 154,444 Q152,434 148,428 Z" fill="none" stroke="#E5E7EB" stroke-width="1.5"/>
+    </g>
+
+    <!-- ── NEW HAIR ACCESSORIES ── -->
+
+    <!-- Pigtails with yellow scrunchies -->
+    <g id="hair-pigtails">
+      <!-- Left bunch -->
+      <ellipse cx="38" cy="52" rx="16" ry="20" fill="#3D2314"/>
+      <path d="M24,56 C20,70 22,96 26,116 C28,120 34,120 36,116 C40,96 42,70 40,58" fill="#3D2314"/>
+      <!-- Left highlight -->
+      <path d="M28,38 Q38,30 48,38" stroke="#6B3A2A" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <!-- Left scrunchie -->
+      <ellipse cx="33" cy="70" rx="16" ry="8" fill="#FFD700"/>
+      <ellipse cx="33" cy="70" rx="11" ry="5.5" fill="#FFC000"/>
+      <ellipse cx="33" cy="70" rx="5" ry="3" fill="#FFD700"/>
+      <!-- Right bunch -->
+      <ellipse cx="162" cy="52" rx="16" ry="20" fill="#3D2314"/>
+      <path d="M176,56 C180,70 178,96 174,116 C172,120 166,120 164,116 C160,96 158,70 160,58" fill="#3D2314"/>
+      <!-- Right highlight -->
+      <path d="M152,38 Q162,30 172,38" stroke="#6B3A2A" stroke-width="4" fill="none" stroke-linecap="round"/>
+      <!-- Right scrunchie -->
+      <ellipse cx="167" cy="70" rx="16" ry="8" fill="#FFD700"/>
+      <ellipse cx="167" cy="70" rx="11" ry="5.5" fill="#FFC000"/>
+      <ellipse cx="167" cy="70" rx="5" ry="3" fill="#FFD700"/>
+    </g>
+
+    <!-- Silver sparkle tiara -->
+    <g id="hair-tiara">
+      <!-- Band -->
+      <rect x="48" y="44" width="104" height="20" rx="5" fill="#C0C0C0"/>
+      <rect x="48" y="44" width="104" height="7" rx="4" fill="rgba(255,255,255,0.55)"/>
+      <!-- Left point -->
+      <polygon points="48,44 58,18 68,44" fill="#D4D4D8"/>
+      <!-- Centre point (tallest) -->
+      <polygon points="80,44 100,8 120,44" fill="#E4E4E7"/>
+      <!-- Right point -->
+      <polygon points="132,44 142,18 152,44" fill="#D4D4D8"/>
+      <!-- Stars at tips -->
+      <polygon points="58,20 60,14 62,20 68,20 63,24 65,30 58,26 51,30 53,24 48,20" fill="#FFD700"/>
+      <polygon points="100,10 103,3 106,10 114,10 108,15 110,22 100,17 90,22 92,15 86,10" fill="#FFD700"/>
+      <polygon points="142,20 144,14 146,20 152,20 147,24 149,30 142,26 135,30 137,24 132,20" fill="#FFD700"/>
+      <!-- Gems on band -->
+      <circle cx="72" cy="54" r="6" fill="#60A5FA"/>
+      <circle cx="72" cy="52" r="2.5" fill="rgba(255,255,255,0.8)"/>
+      <circle cx="100" cy="54" r="7" fill="#A855F7"/>
+      <circle cx="100" cy="52" r="3" fill="rgba(255,255,255,0.8)"/>
+      <circle cx="128" cy="54" r="6" fill="#60A5FA"/>
+      <circle cx="128" cy="52" r="2.5" fill="rgba(255,255,255,0.8)"/>
+      <!-- Sparkle dots on band -->
+      <circle cx="86" cy="54" r="3" fill="#FFD700"/>
+      <circle cx="114" cy="54" r="3" fill="#FFD700"/>
+    </g>
+
   </defs>
 </svg>
 <!-- /hidden defs -->
@@ -240,15 +390,27 @@
              role="button" tabindex="0" aria-label="Equip purple sparkle top">
           <img src="images/top-purple.svg" width="80" height="80" alt="" draggable="false">
         </div>
+        <div class="wardrobe-item" data-item="top-rainbow" data-zone="top"
+             role="button" tabindex="0" aria-label="Equip rainbow stripe tee">
+          <img src="images/top-rainbow.svg" width="80" height="80" alt="" draggable="false">
+        </div>
 
         <div class="wardrobe-section-label">Skirts &amp; Pants</div>
         <div class="wardrobe-item" data-item="skirt-yellow" data-zone="bottom"
              role="button" tabindex="0" aria-label="Equip yellow flared skirt">
           <img src="images/skirt-yellow.svg" width="80" height="80" alt="" draggable="false">
         </div>
+        <div class="wardrobe-item" data-item="skirt-pink" data-zone="bottom"
+             role="button" tabindex="0" aria-label="Equip pink tutu skirt">
+          <img src="images/skirt-pink.svg" width="80" height="80" alt="" draggable="false">
+        </div>
         <div class="wardrobe-item" data-item="pants-purple" data-zone="bottom"
              role="button" tabindex="0" aria-label="Equip purple pants">
           <img src="images/pants-purple.svg" width="80" height="80" alt="" draggable="false">
+        </div>
+        <div class="wardrobe-item" data-item="pants-denim" data-zone="bottom"
+             role="button" tabindex="0" aria-label="Equip blue denim jeans">
+          <img src="images/pants-denim.svg" width="80" height="80" alt="" draggable="false">
         </div>
 
         <div class="wardrobe-section-label">Shoes</div>
@@ -260,6 +422,10 @@
              role="button" tabindex="0" aria-label="Equip gold sparkle heels">
           <img src="images/shoes-gold.svg" width="80" height="80" alt="" draggable="false">
         </div>
+        <div class="wardrobe-item" data-item="shoes-white" data-zone="shoes"
+             role="button" tabindex="0" aria-label="Equip white sneakers">
+          <img src="images/shoes-white.svg" width="80" height="80" alt="" draggable="false">
+        </div>
 
         <div class="wardrobe-section-label">Hair</div>
         <div class="wardrobe-item" data-item="hair-bow" data-zone="hair"
@@ -269,6 +435,14 @@
         <div class="wardrobe-item" data-item="hair-crown" data-zone="hair"
              role="button" tabindex="0" aria-label="Equip gold princess crown">
           <img src="images/hair-crown.svg" width="80" height="80" alt="" draggable="false">
+        </div>
+        <div class="wardrobe-item" data-item="hair-pigtails" data-zone="hair"
+             role="button" tabindex="0" aria-label="Equip yellow pigtails">
+          <img src="images/hair-pigtails.svg" width="80" height="80" alt="" draggable="false">
+        </div>
+        <div class="wardrobe-item" data-item="hair-tiara" data-zone="hair"
+             role="button" tabindex="0" aria-label="Equip silver tiara">
+          <img src="images/hair-tiara.svg" width="80" height="80" alt="" draggable="false">
         </div>
 
       </div><!-- /wardrobe-items -->
@@ -331,6 +505,8 @@
 
         <!-- 7. Neck -->
         <rect x="88" y="148" width="24" height="26" rx="7" fill="#FBBF8C"/>
+        <!-- Neck shadow for dimension -->
+        <ellipse cx="100" cy="172" rx="14" ry="5" fill="#E8A87C" opacity="0.5"/>
 
         <!-- 8. zone-top (clothing: tops / shirts) -->
         <g id="zone-top"></g>
@@ -355,6 +531,13 @@
         <path d="M128,20 Q118,28 124,40" stroke="#3D2314" stroke-width="5"
               fill="none" stroke-linecap="round"/>
 
+        <!-- Hair highlights for depth -->
+        <path d="M72,20 Q100,10 128,20 Q116,14 100,12 Q84,14 72,20 Z" fill="#6B3A2A" opacity="0.65"/>
+        <path d="M38,80 C34,56 40,32 58,18" stroke="#6B3A2A" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.5"/>
+        <path d="M162,80 C166,56 160,32 142,18" stroke="#6B3A2A" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.5"/>
+        <!-- Hair gloss -->
+        <ellipse cx="90" cy="28" rx="18" ry="8" fill="rgba(255,255,255,0.12)" transform="rotate(-10,90,28)"/>
+
         <!-- Cheeks blush -->
         <ellipse cx="66" cy="116" rx="14" ry="10" fill="#FFB3C6" opacity="0.45"/>
         <ellipse cx="134" cy="116" rx="14" ry="10" fill="#FFB3C6" opacity="0.45"/>
@@ -365,8 +548,8 @@
         <!-- 11. Face (always rendered last / on top) -->
 
         <!-- Eye-shadow (makeup target) -->
-        <ellipse id="eye-left-shadow"  cx="76"  cy="94" rx="19" ry="13" fill="#C084FC"/>
-        <ellipse id="eye-right-shadow" cx="124" cy="94" rx="19" ry="13" fill="#C084FC"/>
+        <ellipse id="eye-left-shadow"  cx="76"  cy="94" rx="16" ry="10" fill="#C084FC"/>
+        <ellipse id="eye-right-shadow" cx="124" cy="94" rx="16" ry="10" fill="#C084FC"/>
 
         <!-- Eye whites -->
         <ellipse cx="76"  cy="96" rx="17" ry="15" fill="white"/>
@@ -385,6 +568,10 @@
         <circle cx="127" cy="95" r="3"   fill="white"/>
         <circle cx="73"  cy="103" r="1.5" fill="white"/>
         <circle cx="121" cy="103" r="1.5" fill="white"/>
+
+        <!-- Blink lids (animated by CSS – scaleY toggles to cover eye whites) -->
+        <ellipse id="lid-left"  cx="76"  cy="96" rx="17" ry="15" fill="#FBBF8C"/>
+        <ellipse id="lid-right" cx="124" cy="96" rx="17" ry="15" fill="#FBBF8C"/>
 
         <!-- Top lashes – left eye -->
         <line x1="59"  y1="86"  x2="61"  y2="79"  stroke="#0F0800" stroke-width="2.2" stroke-linecap="round"/>
@@ -433,6 +620,9 @@
       <div class="snap-ring" id="snap-ring-bottom"></div>
       <div class="snap-ring" id="snap-ring-shoes"></div>
       <div class="snap-ring" id="snap-ring-hair"></div>
+
+      <!-- Outfit vibe feedback label -->
+      <div id="vibe-label" aria-live="polite" aria-atomic="true"></div>
 
     </div><!-- /doll-area -->
 

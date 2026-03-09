@@ -349,6 +349,50 @@ body {
   100% { border-color: #A855F7; transform: translate(-50%, -50%) scale(1.07); }
 }
 
+/* ── Blink animation ── */
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(0); }
+  95%, 98%      { transform: scaleY(1); }
+}
+
+#lid-left, #lid-right {
+  transform-box: fill-box;
+  transform-origin: top center;
+  animation: blink 3.5s ease-in-out infinite;
+}
+
+/* ── Doll idle sway ── */
+@keyframes dollSway {
+  0%, 100% { transform: rotate(0deg);    }
+  25%       { transform: rotate(0.8deg); }
+  75%       { transform: rotate(-0.8deg);}
+}
+
+#doll-svg {
+  animation: dollSway 4.5s ease-in-out infinite;
+}
+
+/* ── Outfit vibe label ── */
+#vibe-label {
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #FF4D8D;
+  min-height: 1.5em;
+  letter-spacing: 0.5px;
+  pointer-events: none;
+  margin-top: 6px;
+}
+
+#vibe-label.vibe-pop {
+  animation: vibePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes vibePop {
+  0%   { transform: scale(0.4); opacity: 0; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
 /* ── Responsive narrow screens ── */
 @media (max-width: 580px) {
   #header h1       { font-size: 1.3rem; }

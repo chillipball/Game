@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <!-- Left sneaker body -->
+  <path d="M2,30 C0,40 1,54 5,62 Q14,70 30,68 Q36,62 35,50 L33,30 Z" fill="white"/>
+  <!-- Left pink sole -->
+  <path d="M0,56 C0,62 4,68 12,70 Q22,72 30,68 Q36,64 35,60 Q22,64 10,62 Z" fill="#FF6B9D"/>
+  <!-- Left laces -->
+  <line x1="6"  y1="38" x2="32" y2="36" stroke="#FF6B9D" stroke-width="3"   stroke-linecap="round"/>
+  <line x1="6"  y1="46" x2="32" y2="44" stroke="#FFADD2" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Left toe cap -->
+  <path d="M2,46 Q4,60 6,62" stroke="#F0F0F0" stroke-width="2" fill="none"/>
+  <!-- Left outline -->
+  <path d="M2,30 C0,40 1,54 5,62 Q14,70 30,68 Q36,62 35,50 L33,30 Z" fill="none" stroke="#E2E8F0" stroke-width="2"/>
+  <!-- Right sneaker body -->
+  <path d="M45,30 L44,32 L46,68 Q62,72 74,68 Q80,62 80,50 Q78,38 74,30 Z" fill="white"/>
+  <!-- Right pink sole -->
+  <path d="M42,58 C42,64 48,70 58,72 Q68,72 74,68 Q80,64 80,60 Q68,64 54,62 Z" fill="#FF6B9D"/>
+  <!-- Right laces -->
+  <line x1="48" y1="38" x2="78" y2="36" stroke="#FF6B9D" stroke-width="3"   stroke-linecap="round"/>
+  <line x1="48" y1="46" x2="78" y2="44" stroke="#FFADD2" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Right outline -->
+  <path d="M45,30 L44,32 L46,68 Q62,72 74,68 Q80,62 80,50 Q78,38 74,30 Z" fill="none" stroke="#E2E8F0" stroke-width="2"/>
+</svg>

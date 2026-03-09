@@ -1,17 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#E879F9"/>
+      <stop offset="100%" stop-color="#6B21A8"/>
+    </linearGradient>
+  </defs>
   <!-- Body -->
-  <path d="M16,20 C11,28 10,46 11,56 C12,62 20,68 27,69
-           L53,69 C60,68 68,62 69,56 C70,46 69,28 64,20
-           C56,14 40,11 40,11 C40,11 24,14 16,20 Z"
-        fill="#A855F7"/>
-  <!-- Sparkle dots -->
-  <circle cx="29" cy="36" r="3.5" fill="white" opacity="0.9"/>
-  <circle cx="40" cy="30" r="3.5" fill="white" opacity="0.9"/>
-  <circle cx="51" cy="36" r="3.5" fill="white" opacity="0.9"/>
-  <circle cx="34" cy="48" r="2.5" fill="white" opacity="0.8"/>
-  <circle cx="46" cy="48" r="2.5" fill="white" opacity="0.8"/>
+  <path d="M14,20 C10,28 9,50 10,62 Q22,72 40,72 Q58,72 70,62 C71,50 70,28 66,20 C58,14 40,11 40,11 C40,11 22,14 14,20 Z" fill="url(#g)"/>
+  <!-- Fabric sheen -->
+  <path d="M18,22 Q30,16 50,20" stroke="rgba(255,255,255,0.3)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- Sparkle dots (bigger) -->
+  <circle cx="25" cy="36" r="5" fill="white" opacity="0.92"/>
+  <circle cx="40" cy="28" r="5" fill="white" opacity="0.92"/>
+  <circle cx="55" cy="36" r="5" fill="white" opacity="0.92"/>
+  <circle cx="31" cy="50" r="4" fill="white" opacity="0.85"/>
+  <circle cx="49" cy="50" r="4" fill="white" opacity="0.85"/>
+  <circle cx="40" cy="60" r="3.5" fill="white" opacity="0.75"/>
   <!-- Glitter hem -->
-  <path d="M11,58 Q18,66 25,59 Q32,66 39,59 Q46,66 53,59
-           Q60,66 67,59 Q70,64 69,69 L11,69 Z"
-        fill="#C084FC"/>
+  <path d="M10,58 Q18,66 26,59 Q34,66 42,59 Q50,66 58,59 Q66,66 70,60 L70,66 L10,66 Z" fill="#F0ABFC"/>
 </svg>

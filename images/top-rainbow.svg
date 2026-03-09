@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <clipPath id="tshirt">
+      <path d="M18,18 C12,26 11,52 12,64 Q24,74 40,74 Q56,74 68,64 C69,52 68,26 62,18 C54,12 40,10 40,10 C40,10 26,12 18,18 Z"/>
+    </clipPath>
+  </defs>
+  <!-- Tee base -->
+  <path d="M18,18 C12,26 11,52 12,64 Q24,74 40,74 Q56,74 68,64 C69,52 68,26 62,18 C54,12 40,10 40,10 C40,10 26,12 18,18 Z" fill="white"/>
+  <!-- Short sleeves -->
+  <path d="M18,18 C12,24 10,34 12,40 L24,36 C24,30 22,24 22,20 Z" fill="white"/>
+  <path d="M62,18 C68,24 70,34 68,40 L56,36 C56,30 58,24 58,20 Z" fill="white"/>
+  <!-- Rainbow stripes clipped to tee -->
+  <g clip-path="url(#tshirt)">
+    <rect x="0" y="22" width="80" height="9" fill="#FF3333"/>
+    <rect x="0" y="31" width="80" height="9" fill="#FF8800"/>
+    <rect x="0" y="40" width="80" height="9" fill="#FFD700"/>
+    <rect x="0" y="49" width="80" height="9" fill="#33BB33"/>
+    <rect x="0" y="58" width="80" height="9" fill="#3366FF"/>
+    <rect x="0" y="67" width="80" height="9" fill="#9933FF"/>
+  </g>
+  <!-- Outline -->
+  <path d="M18,18 C12,26 11,52 12,64 Q24,74 40,74 Q56,74 68,64 C69,52 68,26 62,18 C54,12 40,10 40,10 C40,10 26,12 18,18 Z" fill="none" stroke="#DDD" stroke-width="1.5"/>
+</svg>

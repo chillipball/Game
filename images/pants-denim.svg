@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#93C5FD"/>
+      <stop offset="100%" stop-color="#1E3A8A"/>
+    </linearGradient>
+  </defs>
+  <!-- Waistband -->
+  <rect x="6" y="4" width="68" height="14" rx="5" fill="#1E40AF"/>
+  <rect x="8" y="5" width="64" height="5"  rx="3" fill="rgba(255,255,255,0.2)"/>
+  <!-- Belt loops -->
+  <rect x="18" y="2" width="8" height="10" rx="2" fill="#2563EB"/>
+  <rect x="54" y="2" width="8" height="10" rx="2" fill="#2563EB"/>
+  <!-- Left leg -->
+  <path d="M6,17 C5,38 5,60 6,78 L34,78 C35,60 35,38 34,17 Z" fill="url(#g)"/>
+  <!-- Right leg -->
+  <path d="M46,17 C45,38 45,60 46,78 L74,78 C75,60 75,38 74,17 Z" fill="url(#g)"/>
+  <!-- Crotch -->
+  <path d="M34,17 L40,28 L46,17 Z" fill="url(#g)"/>
+  <!-- Stitching -->
+  <line x1="20" y1="17" x2="20" y2="78" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-dasharray="5,5"/>
+  <line x1="60" y1="17" x2="60" y2="78" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-dasharray="5,5"/>
+  <!-- Pocket arc -->
+  <path d="M8,26 Q18,20 30,26" stroke="rgba(255,255,255,0.7)" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Rolled cuffs -->
+  <rect x="6"  y="68" width="28" height="12" rx="3" fill="#1E40AF"/>
+  <rect x="46" y="68" width="28" height="12" rx="3" fill="#1E40AF"/>
+  <rect x="6"  y="68" width="28" height="4"  rx="2" fill="rgba(255,255,255,0.2)"/>
+  <rect x="46" y="68" width="28" height="4"  rx="2" fill="rgba(255,255,255,0.2)"/>
+</svg>

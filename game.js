@@ -1,6 +1,104 @@
 'use strict';
 
 /* ══════════════════════════════════════
+   Audio (Web Audio API — no files needed)
+══════════════════════════════════════ */
+let _audioCtx = null;
+function getAudioCtx() {
+  if (!_audioCtx) _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (_audioCtx.state === 'suspended') _audioCtx.resume();
+  return _audioCtx;
+}
+
+function playSnapSound() {
+  try {
+    const ctx  = getAudioCtx();
+    const osc  = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(440, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.12);
+    gain.gain.setValueAtTime(0.25, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.35);
+  } catch (_) { /* audio not available */ }
+  if (navigator.vibrate) navigator.vibrate(40);
+}
+
+function playSwatchSound() {
+  try {
+    const ctx  = getAudioCtx();
+    const osc  = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(660, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(990, ctx.currentTime + 0.08);
+    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.22);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.22);
+  } catch (_) { /* audio not available */ }
+}
+
+function playResetSound() {
+  try {
+    const ctx   = getAudioCtx();
+    const notes = [880, 698, 554, 440];
+    notes.forEach((freq, i) => {
+      const osc  = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.type = 'sine';
+      const t = ctx.currentTime + i * 0.1;
+      osc.frequency.setValueAtTime(freq, t);
+      gain.gain.setValueAtTime(0.2, t);
+      gain.gain.exponentialRampToValueAtTime(0.001, t + 0.18);
+      osc.start(t);
+      osc.stop(t + 0.18);
+    });
+  } catch (_) { /* audio not available */ }
+  if (navigator.vibrate) navigator.vibrate([30, 20, 30]);
+}
+
+/* ══════════════════════════════════════
+   Outfit vibe feedback
+══════════════════════════════════════ */
+const VIBES = {
+  'hair-crown,shoes-gold,skirt-yellow,top-pink':       '👑 Princess Mode!',
+  'hair-crown,shoes-gold,skirt-yellow,top-purple':     '👑 Royal Glam!',
+  'hair-crown,shoes-gold,skirt-pink,top-pink':         '🌸 Fairy Princess!',
+  'hair-bow,shoes-white,pants-denim,top-rainbow':      '🌈 Rainbow Vibes!',
+  'hair-bow,shoes-red,skirt-pink,top-pink':            '💖 Super Cute!',
+  'hair-tiara,shoes-gold,skirt-yellow,top-blue':       '✨ Star Queen!',
+  'hair-pigtails,shoes-white,pants-denim,top-blue':    '😎 Cool & Casual',
+  'hair-pigtails,shoes-white,pants-denim,top-rainbow': '🌈 Fun & Playful!',
+};
+
+function updateVibe() {
+  const items = Object.values(state.equipped).filter(Boolean).sort();
+  const label = document.getElementById('vibe-label');
+  if (!label) return;
+
+  const text = items.length === 4
+    ? (VIBES[items.join(',')] ?? '✨ Full Outfit!')
+    : '';
+
+  if (text === label.textContent) return;
+  label.textContent = text;
+  label.classList.remove('vibe-pop');
+  requestAnimationFrame(() => {
+    label.classList.add('vibe-pop');
+    label.addEventListener('animationend', () => label.classList.remove('vibe-pop'), { once: true });
+  });
+}
+
+/* ══════════════════════════════════════
    Constants
 ══════════════════════════════════════ */
 const SVG_WIDTH          = 200;
@@ -101,6 +199,10 @@ function equip(itemId, zoneName) {
   const dollSvg = document.getElementById('doll-svg');
   dollSvg.classList.add('glow');
   setTimeout(() => dollSvg.classList.remove('glow'), GLOW_DURATION_MS);
+
+  // Sound + haptic + vibe
+  playSnapSound();
+  updateVibe();
 }
 
 /* ══════════════════════════════════════
@@ -339,6 +441,7 @@ function activateSwatch(sw) {
 
   const { x, y } = dollSvgToPage(100, 105);
   spawnSparkles(x, y);
+  playSwatchSound();
 }
 
 document.querySelectorAll('.swatch').forEach(sw => {
@@ -370,11 +473,16 @@ document.getElementById('reset-btn').addEventListener('click', () => {
   document.querySelectorAll('.wardrobe-item').forEach(el => el.classList.remove('equipped'));
   document.querySelectorAll('.swatch').forEach(el => el.classList.remove('selected'));
 
-  // Celebratory sparkles on reset
+  // Clear vibe label
+  const label = document.getElementById('vibe-label');
+  if (label) label.textContent = '';
+
+  // Celebratory sparkles + sound on reset
   const { x, y } = dollSvgToPage(100, 240);
   spawnSparkles(x, y);
   spawnSparkles(x - 40, y - 60);
   spawnSparkles(x + 40, y - 60);
+  playResetSound();
 });
 
 /* ══════════════════════════════════════

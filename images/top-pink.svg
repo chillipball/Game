@@ -1,18 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FF8FB3"/>
+      <stop offset="100%" stop-color="#D90055"/>
+    </linearGradient>
+  </defs>
   <!-- Shoulder straps -->
-  <rect x="26" y="8"  width="10" height="14" rx="5" fill="#FF4D8D"/>
-  <rect x="44" y="8"  width="10" height="14" rx="5" fill="#FF4D8D"/>
+  <rect x="22" y="4" width="11" height="20" rx="4" fill="url(#g)"/>
+  <rect x="47" y="4" width="11" height="20" rx="4" fill="url(#g)"/>
   <!-- Body -->
-  <path d="M14,20 C10,28 9,48 10,58 C11,64 20,70 28,71
-           L52,71 C60,70 69,64 70,58 C71,48 70,28 66,20
-           C58,14 40,11 40,11 C40,11 22,14 14,20 Z"
-        fill="#FF4D8D"/>
-  <!-- Ruffle hem -->
-  <path d="M10,62 Q17,70 24,63 Q31,70 38,63 Q45,70 52,63
-           Q59,70 66,63 Q70,68 70,71 L10,71 Z"
-        fill="#FF78A8"/>
+  <path d="M10,22 C6,30 5,55 7,68 Q20,78 40,78 Q60,78 73,68 C75,55 74,30 70,22 C58,14 40,12 40,12 C40,12 22,14 10,22 Z" fill="url(#g)"/>
+  <!-- Fabric sheen -->
+  <path d="M18,24 Q28,18 42,22" stroke="rgba(255,255,255,0.3)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- Hem ruffle -->
+  <path d="M7,60 Q17,70 27,60 Q37,70 47,60 Q57,70 67,60 Q72,68 73,66 L73,72 L7,72 Z" fill="#FF8FB3"/>
   <!-- Heart -->
-  <path d="M34,34 C34,28 40,26 40,30 C40,26 46,28 46,34
-           C46,40 40,46 40,46 C40,46 34,40 34,34 Z"
-        fill="white"/>
+  <path d="M26,32 C26,22 40,18 40,27 C40,18 54,22 54,32 C54,42 40,53 40,53 C40,53 26,42 26,32 Z" fill="white"/>
 </svg>

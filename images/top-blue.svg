@@ -1,16 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#BAE6FD"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+  </defs>
   <!-- Left sleeve -->
-  <path d="M6,20 C3,30 3,54 5,64 L18,62 C17,52 17,30 19,22 Z"
-        fill="#38BDF8"/>
+  <path d="M4,20 C2,32 3,56 6,66 L20,63 C19,53 19,30 22,20 Z" fill="url(#g)"/>
   <!-- Right sleeve -->
-  <path d="M74,20 C62,30 63,52 62,62 L75,64 C77,54 77,30 74,20 Z"
-        fill="#38BDF8"/>
+  <path d="M76,20 C78,32 77,56 74,66 L60,63 C61,53 61,30 58,20 Z" fill="url(#g)"/>
   <!-- Body -->
-  <path d="M19,20 C13,28 12,48 13,58 C14,64 22,70 29,71
-           L51,71 C58,70 66,64 67,58 C68,48 67,28 61,20
-           C53,14 40,11 40,11 C40,11 27,14 19,20 Z"
-        fill="#38BDF8"/>
-  <!-- Star -->
-  <polygon points="40,28 42,35 50,35 44,40 46,47 40,42 34,47 36,40 30,35 38,35"
-           fill="white"/>
+  <path d="M22,18 C14,26 13,52 14,64 Q26,74 40,74 Q54,74 66,64 C67,52 66,26 58,18 C50,12 40,10 40,10 C40,10 30,12 22,18 Z" fill="url(#g)"/>
+  <!-- Sleeve fold lines -->
+  <line x1="7"  y1="40" x2="17" y2="42" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="7"  y1="50" x2="17" y2="52" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="63" y1="40" x2="73" y2="42" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+  <!-- Fabric sheen -->
+  <path d="M24,22 Q36,16 52,20" stroke="rgba(255,255,255,0.3)" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- Star (bigger) -->
+  <polygon points="40,22 44,34 58,34 47,42 51,54 40,46 29,54 33,42 22,34 36,34" fill="white"/>
 </svg>
