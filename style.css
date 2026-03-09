@@ -266,6 +266,21 @@ body {
   transform: scale(0.97);
 }
 
+#reset-btn:focus-visible {
+  outline: 3px solid #A855F7;
+  outline-offset: 3px;
+}
+
+.wardrobe-item:focus-visible {
+  outline: 3px solid #A855F7;
+  outline-offset: 2px;
+}
+
+.swatch:focus-visible {
+  outline: 3px solid #1A0A00;
+  outline-offset: 2px;
+}
+
 /* ── Drag clone ── */
 #drag-clone {
   position: fixed;

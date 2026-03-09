@@ -1,12 +1,26 @@
 'use strict';
 
 /* ══════════════════════════════════════
+   Constants
+══════════════════════════════════════ */
+const SVG_WIDTH          = 200;
+const SVG_HEIGHT         = 480;
+const DRAG_THRESHOLD_PX  = 7;
+const GLOW_DURATION_MS   = 550;
+const SPARKLE_COUNT      = 10;
+const SPARKLE_LIFETIME_MS = 900;
+const CLONE_FADE_MS      = 200;
+
+const DEFAULT_LIP_COLOUR = '#FF4D6D';
+const DEFAULT_EYE_COLOUR = '#C084FC';
+
+/* ══════════════════════════════════════
    State
 ══════════════════════════════════════ */
 const state = {
   equipped:  { top: null, bottom: null, shoes: null, hair: null },
-  lipColour: '#FF4D6D',
-  eyeColour: '#C084FC',
+  lipColour: DEFAULT_LIP_COLOUR,
+  eyeColour: DEFAULT_EYE_COLOUR,
 };
 
 /* ══════════════════════════════════════
@@ -26,8 +40,8 @@ function dollSvgToPage(svgX, svgY) {
   const svg  = document.getElementById('doll-svg');
   const rect = svg.getBoundingClientRect();
   return {
-    x: rect.left + (svgX / 200) * rect.width,
-    y: rect.top  + (svgY / 480) * rect.height,
+    x: rect.left + (svgX / SVG_WIDTH)  * rect.width,
+    y: rect.top  + (svgY / SVG_HEIGHT) * rect.height,
   };
 }
 
@@ -35,8 +49,8 @@ function dollSvgToPage(svgX, svgY) {
 function getPageZones() {
   const svg  = document.getElementById('doll-svg');
   const rect = svg.getBoundingClientRect();
-  const scaleX = rect.width  / 200;
-  const scaleY = rect.height / 480;
+  const scaleX = rect.width  / SVG_WIDTH;
+  const scaleY = rect.height / SVG_HEIGHT;
   // SVG uses preserveAspectRatio="xMidYMid meet" (the default) which scales by
   // the minimum of the two ratios, so snap radii must use Math.min.
   const scale  = Math.min(scaleX, scaleY);
@@ -55,8 +69,10 @@ function getPageZones() {
 function equip(itemId, zoneName) {
   const zoneEl = document.getElementById(`zone-${zoneName}`);
 
-  // Swap content
-  zoneEl.innerHTML = `<use href="#${itemId}"/>`;
+  // Swap content using safe DOM APIs (avoids innerHTML XSS risk)
+  const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+  use.setAttribute('href', `#${itemId}`);
+  zoneEl.replaceChildren(use);
 
   // Trigger CSS snap-pop animation.
   // offsetWidth is always 0 on SVG elements so we use getAnimations() to cancel
@@ -84,7 +100,7 @@ function equip(itemId, zoneName) {
   // Brief doll glow
   const dollSvg = document.getElementById('doll-svg');
   dollSvg.classList.add('glow');
-  setTimeout(() => dollSvg.classList.remove('glow'), 550);
+  setTimeout(() => dollSvg.classList.remove('glow'), GLOW_DURATION_MS);
 }
 
 /* ══════════════════════════════════════
@@ -99,12 +115,11 @@ function spawnSparkles(cx, cy) {
   container.className = 'sparkle-container';
   document.body.appendChild(container);
 
-  const count = 10;
-  for (let i = 0; i < count; i++) {
+  for (let i = 0; i < SPARKLE_COUNT; i++) {
     const s     = document.createElement('div');
     s.className = 'sparkle';
 
-    const angle = (i / count) * Math.PI * 2 + (Math.random() - 0.5) * 0.5;
+    const angle = (i / SPARKLE_COUNT) * Math.PI * 2 + (Math.random() - 0.5) * 0.5;
     const dist  = 38 + Math.random() * 36;
 
     s.style.setProperty('--dx', `${Math.cos(angle) * dist}px`);
@@ -119,7 +134,7 @@ function spawnSparkles(cx, cy) {
     container.appendChild(s);
   }
 
-  setTimeout(() => container.remove(), 900);
+  setTimeout(() => container.remove(), SPARKLE_LIFETIME_MS);
 }
 
 /* ══════════════════════════════════════
@@ -143,8 +158,9 @@ function createDragClone(itemEl, x, y) {
     clone.style.width  = img.width  + 'px';
     clone.style.height = img.height + 'px';
   } else {
+    // Fallback: deep-clone the SVG node (avoids innerHTML)
     const svgEl = itemEl.querySelector('svg');
-    clone.innerHTML    = svgEl.outerHTML;
+    clone.appendChild(svgEl.cloneNode(true));
     clone.style.width  = svgEl.getAttribute('width')  + 'px';
     clone.style.height = svgEl.getAttribute('height') + 'px';
   }
@@ -160,7 +176,7 @@ function removeDragClone() {
   const clone = document.getElementById('drag-clone');
   if (!clone) return;
   clone.classList.add('fading');
-  setTimeout(() => clone.remove(), 200);
+  setTimeout(() => clone.remove(), CLONE_FADE_MS);
 }
 
 /* ══════════════════════════════════════
@@ -231,11 +247,16 @@ function onPointerMove(e) {
   const px = e.clientX;
   const py = e.clientY;
 
-  if (!drag.moved && Math.hypot(px - drag.startX, py - drag.startY) > 7) {
+  if (!drag.moved && Math.hypot(px - drag.startX, py - drag.startY) > DRAG_THRESHOLD_PX) {
     drag.moved = true;
     // Capture pointer so the element keeps receiving events even if the
     // finger/cursor leaves the element (critical for touch drag reliability).
-    try { drag.itemEl.setPointerCapture(drag.pointerId); } catch (_) {}
+    try {
+      drag.itemEl.setPointerCapture(drag.pointerId);
+    } catch (err) {
+      if (err instanceof DOMException) cleanupDrag();
+      else throw err;
+    }
   }
 
   // Move clone
@@ -297,31 +318,33 @@ function cleanupDrag() {
 /* ══════════════════════════════════════
    Makeup swatches
 ══════════════════════════════════════ */
+function activateSwatch(sw) {
+  const target = sw.dataset.target;
+  const colour = sw.dataset.colour;
+
+  document.querySelectorAll(`.swatch[data-target="${target}"]`).forEach(s =>
+    s.classList.remove('selected')
+  );
+  sw.classList.add('selected');
+
+  if (target === 'lips') {
+    state.lipColour = colour;
+    document.getElementById('lips-upper').setAttribute('fill', colour);
+    document.getElementById('lips-lower').setAttribute('fill', colour);
+  } else {
+    state.eyeColour = colour;
+    document.getElementById('eye-left-shadow').setAttribute('fill', colour);
+    document.getElementById('eye-right-shadow').setAttribute('fill', colour);
+  }
+
+  const { x, y } = dollSvgToPage(100, 105);
+  spawnSparkles(x, y);
+}
+
 document.querySelectorAll('.swatch').forEach(sw => {
-  sw.addEventListener('pointerdown', (e) => {
-    e.stopPropagation();
-    const target = sw.dataset.target;
-    const colour = sw.dataset.colour;
-
-    // Deselect siblings
-    document.querySelectorAll(`.swatch[data-target="${target}"]`).forEach(s =>
-      s.classList.remove('selected')
-    );
-    sw.classList.add('selected');
-
-    if (target === 'lips') {
-      state.lipColour = colour;
-      document.getElementById('lips-upper').setAttribute('fill', colour);
-      document.getElementById('lips-lower').setAttribute('fill', colour);
-    } else {
-      state.eyeColour = colour;
-      document.getElementById('eye-left-shadow').setAttribute('fill', colour);
-      document.getElementById('eye-right-shadow').setAttribute('fill', colour);
-    }
-
-    // Sparkle near the face
-    const { x, y } = dollSvgToPage(100, 105);
-    spawnSparkles(x, y);
+  sw.addEventListener('pointerdown', (e) => { e.stopPropagation(); activateSwatch(sw); });
+  sw.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateSwatch(sw); }
   });
 });
 
@@ -329,19 +352,19 @@ document.querySelectorAll('.swatch').forEach(sw => {
    Reset button
 ══════════════════════════════════════ */
 document.getElementById('reset-btn').addEventListener('click', () => {
-  // Clear all clothing zones
+  // Clear all clothing zones using safe DOM API
   ['top', 'bottom', 'shoes', 'hair'].forEach(z => {
-    document.getElementById(`zone-${z}`).innerHTML = '';
+    document.getElementById(`zone-${z}`).replaceChildren();
     state.equipped[z] = null;
   });
 
-  // Reset makeup
-  state.lipColour = '#FF4D6D';
-  state.eyeColour = '#C084FC';
-  document.getElementById('lips-upper').setAttribute('fill', '#FF4D6D');
-  document.getElementById('lips-lower').setAttribute('fill', '#FF4D6D');
-  document.getElementById('eye-left-shadow').setAttribute('fill', '#C084FC');
-  document.getElementById('eye-right-shadow').setAttribute('fill', '#C084FC');
+  // Reset makeup to defaults
+  state.lipColour = DEFAULT_LIP_COLOUR;
+  state.eyeColour = DEFAULT_EYE_COLOUR;
+  document.getElementById('lips-upper').setAttribute('fill', DEFAULT_LIP_COLOUR);
+  document.getElementById('lips-lower').setAttribute('fill', DEFAULT_LIP_COLOUR);
+  document.getElementById('eye-left-shadow').setAttribute('fill', DEFAULT_EYE_COLOUR);
+  document.getElementById('eye-right-shadow').setAttribute('fill', DEFAULT_EYE_COLOUR);
 
   // Reset wardrobe highlights and swatch selections
   document.querySelectorAll('.wardrobe-item').forEach(el => el.classList.remove('equipped'));
@@ -356,7 +379,19 @@ document.getElementById('reset-btn').addEventListener('click', () => {
 
 /* ══════════════════════════════════════
    Wire up wardrobe items
+   (tabindex + keydown for keyboard / switch access)
 ══════════════════════════════════════ */
 document.querySelectorAll('.wardrobe-item').forEach(itemEl => {
   itemEl.addEventListener('pointerdown', onPointerDown);
+  itemEl.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      equip(itemEl.dataset.item, itemEl.dataset.zone);
+    }
+  });
+});
+
+/* Initialise swatch backgrounds from data-colour (single source of truth) */
+document.querySelectorAll('.swatch').forEach(sw => {
+  sw.style.background = sw.dataset.colour;
 });
