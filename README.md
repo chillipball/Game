@@ -2,31 +2,46 @@
 
 A voice-controlled AI assistant built on the Claude Agent SDK.
 
-## Minimum cost setup (2 keys only)
+## Setup (Claude.ai subscription — no API key needed)
 
 ```bash
+# 1. Authenticate once with your Claude.ai Pro/Max plan
+claude auth login
+# Opens a browser → sign in → done. Credentials stored locally.
+
+# 2. Configure the server
 cp .env.example .env
-# Fill in ANTHROPIC_API_KEY + JWT_SECRET only
+# Only JWT_SECRET is required — fill it in:
+#   node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
+
+# 3. Install and run
 pnpm install
 pnpm dev
 ```
 
-Open `http://localhost:5173`. Use the 🎤 button — browser mic + speech synthesis are **free**.
+Open `http://localhost:5173`. The 🎤 button uses browser mic/speech synthesis — completely free.
+
+> **If you prefer per-token billing** instead of your subscription, set `ANTHROPIC_API_KEY` in `.env`.
+
+---
 
 ## Cost breakdown
 
-| Component | Default | Free alternative |
-|-----------|---------|-----------------|
-| AI brain | Claude Sonnet | Set `CLAUDE_MODEL=claude-haiku-4-5-20251001` (~20x cheaper) |
-| STT (voice) | Deepgram (~$0.0059/min) | Browser Web Speech API (🎤 button) |
-| TTS (voice) | Cartesia (paid/char) | Browser SpeechSynthesis (auto-reads replies) |
-| Wake word | — | OpenWakeWord (local, free, no key) |
+| Component | Cost |
+|-----------|------|
+| AI brain | Covered by your Claude.ai Pro/Max plan |
+| STT (voice) | Free — browser Web Speech API |
+| TTS (voice) | Free — browser SpeechSynthesis |
+| Wake word | Free — OpenWakeWord (local) |
 
-**With Haiku + browser voice: only cost is Claude tokens.**
+**Only ongoing cost: your existing Claude.ai subscription.**
+
+---
 
 ## Requirements
 
 - Node.js >= 20, pnpm >= 9
+- Claude Code CLI (`claude`) authenticated via `claude auth login`
 - Python >= 3.12 (voice pipeline only)
 
 ## Structure
@@ -41,14 +56,14 @@ voice/      — Python voice pipeline (optional)
 
 ## Voice pipeline (optional)
 
-Only needed if you want hardware mic + speaker outside the browser.
+Only needed if you want a dedicated hardware mic/speaker outside the browser.
 
 ```bash
 cd voice
 python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt   # installs openwakeword (free)
-# pip install pipecat-ai[deepgram] # only if DEEPGRAM_API_KEY is set
-# pip install pipecat-ai[cartesia] # only if CARTESIA_API_KEY is set
+pip install -r requirements.txt
+# Set DEEPGRAM_API_KEY / CARTESIA_API_KEY in .env for cloud STT/TTS
+# or swap in a local model — see voice/src/pipeline.py comments
 python src/main.py
 ```
 
