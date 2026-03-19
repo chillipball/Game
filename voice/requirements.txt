@@ -1,4 +1,16 @@
-pipecat-ai[deepgram,cartesia,silero]>=0.0.47
-pvporcupine>=3.0.2
+# Core pipeline
+pipecat-ai[silero]>=0.0.47
+
+# Wake word — free, local, no API key
+openwakeword>=0.6.0
+
+# STT — optional, comment out if using offline STT
+pipecat-ai[deepgram]>=0.0.47
+
+# TTS — optional, comment out if using offline TTS
+pipecat-ai[cartesia]>=0.0.47
+
+# Runtime
 python-dotenv>=1.0.1
+numpy>=1.26.0
 websockets>=12.0

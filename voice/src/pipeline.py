@@ -1,16 +1,46 @@
-"""Pipecat pipeline: microphone → VAD → Deepgram STT → orchestrator → Cartesia TTS → speaker."""
+"""Pipecat pipeline: mic → VAD → wake word → STT → orchestrator → TTS → speaker.
+
+STT: Deepgram if DEEPGRAM_API_KEY is set, otherwise raises a clear error
+     (swap for faster-whisper or whisper.cpp for fully free offline STT).
+TTS: Cartesia if CARTESIA_API_KEY is set, otherwise raises a clear error
+     (swap for Kokoro or Piper for fully free offline TTS).
+Wake: OpenWakeWord — free, local, no API key needed.
+"""
+
+import os
 
 from pipecat.audio.vad.silero import SileroVADAnalyzer
 from pipecat.pipeline.pipeline import Pipeline
 from pipecat.pipeline.runner import PipelineRunner
 from pipecat.pipeline.task import PipelineTask
-from pipecat.services.cartesia import CartesiaTTSService
-from pipecat.services.deepgram import DeepgramSTTService
-from pipecat.transports.local.audio import LocalAudioTransport
-from pipecat.transports.local.audio import LocalAudioParams
+from pipecat.transports.local.audio import LocalAudioParams, LocalAudioTransport
 
-from config import CARTESIA_API_KEY, CARTESIA_VOICE_ID, DEEPGRAM_API_KEY
 from wake_word import WakeWordProcessor
+
+
+def _build_stt():
+    key = os.environ.get("DEEPGRAM_API_KEY")
+    if key:
+        from pipecat.services.deepgram import DeepgramSTTService
+        return DeepgramSTTService(api_key=key)
+    raise EnvironmentError(
+        "DEEPGRAM_API_KEY is not set. "
+        "For free offline STT, install faster-whisper and swap this out."
+    )
+
+
+def _build_tts():
+    key = os.environ.get("CARTESIA_API_KEY")
+    if key:
+        voice_id = os.environ.get(
+            "CARTESIA_VOICE_ID", "bf0a246a-8642-498a-9950-80c35e9276b5"
+        )
+        from pipecat.services.cartesia import CartesiaTTSService
+        return CartesiaTTSService(api_key=key, voice_id=voice_id)
+    raise EnvironmentError(
+        "CARTESIA_API_KEY is not set. "
+        "For free offline TTS, install kokoro-onnx or piper-tts and swap this out."
+    )
 
 
 async def build_pipeline() -> tuple[PipelineTask, PipelineRunner]:
@@ -24,13 +54,8 @@ async def build_pipeline() -> tuple[PipelineTask, PipelineRunner]:
         )
     )
 
-    stt = DeepgramSTTService(api_key=DEEPGRAM_API_KEY)
-
-    tts = CartesiaTTSService(
-        api_key=CARTESIA_API_KEY,
-        voice_id=CARTESIA_VOICE_ID,
-    )
-
+    stt = _build_stt()
+    tts = _build_tts()
     wake_word = WakeWordProcessor()
 
     pipeline = Pipeline(
@@ -38,8 +63,6 @@ async def build_pipeline() -> tuple[PipelineTask, PipelineRunner]:
             transport.input(),
             wake_word,
             stt,
-            # Text frames from STT go to the orchestrator transport
-            # (imported and wired in main.py to avoid circular imports)
             tts,
             transport.output(),
         ]

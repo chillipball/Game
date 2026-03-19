@@ -27,11 +27,15 @@ export class AgentSession extends EventEmitter {
     }
 
     try {
+      // CLAUDE_MODEL env var lets you swap cheaply: claude-haiku-4-5-20251001 is ~20x
+      // cheaper than Sonnet. Unset = Claude Code default.
+      const model = process.env.CLAUDE_MODEL;
       for await (const msg of query({
         prompt: inputStream(),
         options: {
           cwd: process.cwd(),
           permissionMode: "acceptEdits",
+          ...(model ? { model } : {}),
           disallowedTools: [
             "Bash(rm -rf*)",
             "Bash(sudo *)",
