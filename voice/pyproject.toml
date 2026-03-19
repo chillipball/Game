@@ -1,0 +1,14 @@
+[project]
+name = "jarvis-voice"
+version = "0.1.0"
+description = "Jarvis voice pipeline (Pipecat + Deepgram + Cartesia + Porcupine)"
+requires-python = ">=3.12"
+dependencies = [
+  "pipecat-ai[deepgram,cartesia,silero]>=0.0.47",
+  "pvporcupine>=3.0.2",
+  "python-dotenv>=1.0.1",
+  "websockets>=12.0",
+]
+
+[tool.uv]
+dev-dependencies = []

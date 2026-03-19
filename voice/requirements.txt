@@ -1,0 +1,4 @@
+pipecat-ai[deepgram,cartesia,silero]>=0.0.47
+pvporcupine>=3.0.2
+python-dotenv>=1.0.1
+websockets>=12.0

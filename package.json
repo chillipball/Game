@@ -1,0 +1,14 @@
+{
+  "name": "jarvis-root",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm -r --parallel run dev",
+    "build": "pnpm -r --parallel run build",
+    "start:server": "pnpm --filter server start",
+    "dev:client": "pnpm --filter client dev"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  }
+}
